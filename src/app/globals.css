@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4da6ff;
+  --primary-hover: #3b94f0;
+  --secondary: #2b7fd4;
+  --mint: #5ebb9b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-slate-800 antialiased;
+}
+
+/* Pharmacy landing — subtle clinical grid on hero-adjacent areas */
+.pharmacy-section-alt {
+  background-color: #f8fafc;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(148 163 184 / 0.12) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /** Equal horizontal gutters — use on sections for phone/desktop symmetry */
+  .page-px {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/**
+ * Shared section shell — keeps mobile/desktop alignment consistent site-wide.
+ * Use: <section class="section-y ..."><div class="section-inner">…</div></section>
+ */
+@layer components {
+  .section-inner {
+    @apply mx-auto w-full max-w-6xl page-px;
+  }
+
+  .section-inner-wide {
+    @apply mx-auto w-full max-w-7xl page-px;
+  }
+
+  .section-y {
+    @apply py-14 md:py-20;
+  }
+
+  .section-y-spacious {
+    @apply py-16 md:py-24;
+  }
+
+  .section-eyebrow {
+    @apply text-center text-xs font-semibold uppercase tracking-[0.2em] text-primary;
+  }
+
+  .section-title {
+    @apply mt-2 text-center text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-3xl md:text-4xl;
+  }
+
+  .section-intro {
+    @apply mx-auto mt-3 max-w-xl px-0 text-center text-[15px] leading-relaxed text-slate-600 sm:text-base;
+  }
+
+  /** Space from intro / title block to cards or grids */
+  .section-body {
+    @apply mt-10 sm:mt-12;
+  }
+
+  /** Card padding — slightly tighter on very small phones */
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  .card-pad-lg {
+    @apply p-5 sm:p-8;
+  }
+
+  /**
+   * Card face — flat solid sky fill (no gradients). Clipped to rounded corners.
+   * Use: outer .atm-card-face, inner .atm-card-face__content.
+   */
+  .atm-card-face {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 0.55) inset,
+      0 10px 32px -16px rgb(56 189 248 / 0.28),
+      0 3px 12px -6px rgb(15 23 42 / 0.08);
+  }
+
+  .atm-card-face::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    /* Solid sky — matches site clinical blue, no blends */
+    background-color: #dbeafe;
+  }
+
+  .atm-card-face__content {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Category carousel — scrollable but no visible scrollbar */
+.categories-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  display: none;
+}
