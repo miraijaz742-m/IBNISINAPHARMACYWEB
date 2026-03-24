@@ -118,30 +118,82 @@ export const carouselCategories = [
   },
 ] as const;
 
-/**
- * Header / mobile drawer — anchor links matching real sections on the home page
- * (order follows `src/app/page.tsx`).
- */
-export const pageNavLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#categories", label: "Categories" },
-  { href: "#trust", label: "Why us" },
-  { href: "#in-store", label: "In store" },
-  { href: "#reviews", label: "Reviews" },
-  { href: "#availability", label: "Availability" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
-] as const;
+/** Single nav item (anchors on the home page). */
+export type PageNavLink = { readonly href: string; readonly label: string };
+
+/** SaaS-style groups for the header dropdowns; footer still uses the flat `pageNavLinks` list. */
+export const pageNavGroups = [
+  {
+    id: "about-services",
+    label: "About & services",
+    items: [
+      { href: "#about", label: "About" },
+      { href: "#services", label: "Services" },
+      { href: "#categories", label: "Categories" },
+    ],
+  },
+  {
+    id: "trust",
+    label: "Trust & reviews",
+    items: [
+      { href: "#trust", label: "Why us" },
+      { href: "#reviews", label: "Reviews" },
+    ],
+  },
+  {
+    id: "visit",
+    label: "Visit",
+    items: [
+      { href: "#in-store", label: "In store" },
+      { href: "#gallery", label: "Gallery" },
+    ],
+  },
+  {
+    id: "help",
+    label: "Help & contact",
+    items: [
+      { href: "#availability", label: "Availability" },
+      { href: "#contact", label: "Contact" },
+    ],
+  },
+] as const satisfies readonly {
+  readonly id: string;
+  readonly label: string;
+  readonly items: readonly PageNavLink[];
+}[];
+
+/** Flat list for footer / anywhere a simple list is needed (same order as groups). */
+export const pageNavLinks: readonly PageNavLink[] = pageNavGroups.flatMap((g) => [...g.items]);
 
 /** In-page medicine list + “Send message” (WhatsApp) — all “Check availability” CTAs point here */
 export const availabilityHref = "#availability" as const;
 
-/** Bump when you replace `public/hero.png` so browsers skip old cached files. */
-export const heroImageVersion = "6";
+/**
+ * Hero slideshow — save photos in `public/` with these exact names:
+ *
+ *   hero-1.jpg   (first slide + navbar logo)
+ *   hero-2.jpg
+ *   hero-3.jpg
+ *   hero-4.jpg
+ *   hero-5.jpg   …add as many as you like
+ *
+ * Only list files that exist in `heroCarouselFilenames` below (order = slide order).
+ * Bump `heroImageVersion` when you replace any file so browsers reload it.
+ */
+export const heroImageVersion = "9";
 
+/** Filenames under `public/` — order = slideshow order (first = navbar logo). */
+export const heroCarouselFilenames = [
+  "hero-1.jpg",
+  "hero-2.jpg",
+  "hero-3.jpg",
+  "hero-4.jpg",
+  "hero-5.jpg",
+] as const;
+
+/** First hero slide — used by the navbar circular logo */
 export function getHeroImageSrc(): string {
-  return `/hero.png?v=${heroImageVersion}`;
+  return `/${heroCarouselFilenames[0]}?v=${heroImageVersion}`;
 }
 
 export const heroCopy = {
@@ -167,23 +219,27 @@ export const trustItems = [
   "Fast in-store service",
 ] as const;
 
-export const reviews = [
+export type SiteReview = {
+  readonly quote: string;
+  readonly author: string;
+  /** Optional — local file under `public/`, e.g. `/reviews/aamir.jpg` (with permission). Omit = initials avatar. */
+  readonly avatarSrc?: string;
+};
+
+export const reviews: readonly SiteReview[] = [
   {
     quote: "Very professional and helpful at the counter.",
     author: "Aamir Rashid",
-    avatarSrc: "/Men.png",
   },
   {
     quote: "Reliable medicines and a calm, clean store.",
     author: "Sana Bhat",
-    avatarSrc: "/women.png",
   },
   {
     quote: "Quick billing and they take time to explain doses.",
     author: "Bilal Dar",
-    avatarSrc: "/Men.png",
   },
-] as const;
+];
 
 /** Unsplash — pharmacy / clinical interiors (remotePatterns allow images.unsplash.com) */
 export const galleryImages = [

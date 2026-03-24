@@ -4,27 +4,22 @@ const icons = [ShelvesIcon, ReceiptIcon, SearchIcon, SmileIcon] as const;
 
 export function InStoreSection() {
   return (
-    <section id="in-store" className="scroll-mt-24 border-t border-slate-100 bg-surface section-y">
+    <section id="in-store" className="scroll-mt-24 w-full border-t border-sky-100 bg-white py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">Visit us</p>
         <h2 className="section-title">In-store experience</h2>
         <p className="section-intro">
           A tidy shop floor, clear signage, and staff who help you find what you need—without the rush.
         </p>
-        <ul className="section-body grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+        <ul className="section-body grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {inStoreHighlights.map((t, i) => {
             const Icon = icons[i] ?? ShelvesIcon;
             return (
-              <li
-                key={t}
-                className="atm-card-face rounded-2xl border border-sky-300/55 bg-transparent transition hover:border-sky-400/65 hover:shadow-[0_16px_44px_-14px_rgba(56,189,248,0.3)]"
-              >
-                <div className="atm-card-face__content card-pad">
-                  <div className="mb-4 inline-flex rounded-xl border border-white/95 bg-white/88 p-3 text-mint shadow-sm ring-1 ring-mint/30 backdrop-blur-[2px]">
-                    <Icon />
-                  </div>
-                  <p className="font-semibold text-slate-900">{t}</p>
+              <li key={t}>
+                <div className="flex h-10 w-10 items-center text-sky-600" aria-hidden>
+                  <Icon />
                 </div>
+                <p className="mt-4 text-base font-semibold leading-snug text-slate-900 sm:text-lg">{t}</p>
               </li>
             );
           })}

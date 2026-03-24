@@ -33,9 +33,27 @@ body {
     text-wrap: balance;
   }
 
-  /** Equal horizontal gutters — use on sections for phone/desktop symmetry */
+  /**
+   * Horizontal gutters — slightly roomier on phones + respects safe-area (notch / home bar).
+   * Values: ~20px mobile → 24px sm → 32px lg (never less than safe-area inset).
+   */
   .page-px {
-    @apply px-4 sm:px-6 lg:px-8;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  @media (min-width: 640px) {
+    .page-px {
+      padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .page-px {
+      padding-left: max(2rem, env(safe-area-inset-left, 0px));
+      padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    }
   }
 }
 
@@ -61,59 +79,29 @@ body {
   }
 
   .section-eyebrow {
-    @apply text-center text-xs font-semibold uppercase tracking-[0.2em] text-primary;
+    @apply text-center text-xs font-semibold uppercase tracking-[0.22em] text-sky-600;
   }
 
   .section-title {
-    @apply mt-2 text-center text-[1.65rem] font-bold leading-tight tracking-tight text-ink sm:text-3xl md:text-4xl;
+    @apply mt-3 text-center text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-[2.5rem] md:leading-[1.15];
   }
 
   .section-intro {
-    @apply mx-auto mt-3 max-w-xl px-0 text-center text-[15px] leading-relaxed text-slate-600 sm:text-base;
+    @apply mx-auto mt-5 max-w-2xl px-0 text-center text-base leading-relaxed text-slate-600 sm:text-lg;
   }
 
-  /** Space from intro / title block to cards or grids */
+  /** Space from intro / title block to content */
   .section-body {
-    @apply mt-10 sm:mt-12;
+    @apply mt-12 sm:mt-16 md:mt-20;
   }
 
-  /** Card padding — slightly tighter on very small phones */
+  /** Legacy padding utility — prefer plain py/px on sections */
   .card-pad {
-    @apply p-5 sm:p-6;
+    @apply py-5 sm:py-6;
   }
 
   .card-pad-lg {
-    @apply p-5 sm:p-8;
-  }
-
-  /**
-   * Card face — flat solid sky fill (no gradients). Clipped to rounded corners.
-   * Use: outer .atm-card-face, inner .atm-card-face__content.
-   */
-  .atm-card-face {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    box-shadow:
-      0 1px 0 rgb(255 255 255 / 0.55) inset,
-      0 10px 32px -16px rgb(56 189 248 / 0.28),
-      0 3px 12px -6px rgb(15 23 42 / 0.08);
-  }
-
-  .atm-card-face::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    /* Solid sky — matches site clinical blue, no blends */
-    background-color: #dbeafe;
-  }
-
-  .atm-card-face__content {
-    position: relative;
-    z-index: 1;
+    @apply py-6 sm:py-8;
   }
 }
 

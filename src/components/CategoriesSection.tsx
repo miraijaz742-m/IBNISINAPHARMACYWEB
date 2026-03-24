@@ -4,29 +4,23 @@ const icons = [VitaminIcon, DropletIcon, BabyIcon, PillOtcIcon, HeartPulseIcon] 
 
 export function CategoriesSection() {
   return (
-    <section id="categories" className="scroll-mt-24 border-t border-slate-100 bg-white section-y">
+    <section id="categories" className="scroll-mt-24 w-full bg-white py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">Browse in store</p>
         <h2 className="section-title">Categories</h2>
         <p className="section-intro">
           Popular aisles we keep stocked—ask staff if you need a substitute or a specific brand.
         </p>
-        <ul className="section-body grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-5">
+        <ul className="section-body grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-12">
           {showcaseCategories.map((c, i) => {
             const Icon = icons[i] ?? VitaminIcon;
             return (
-              <li
-                key={c.id}
-                id={c.id}
-                className="atm-card-face scroll-mt-28 rounded-2xl border border-sky-300/55 bg-transparent transition hover:border-sky-400/65 hover:shadow-[0_18px_48px_-16px_rgba(56,189,248,0.32)]"
-              >
-                <div className="atm-card-face__content card-pad">
-                  <div className="mb-4 inline-flex rounded-2xl border border-white/95 bg-white/88 p-3.5 text-primary shadow-sm ring-1 ring-sky-300/45 backdrop-blur-[2px]">
-                    <Icon />
-                  </div>
-                  <h3 className="text-lg font-bold text-ink">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{c.blurb}</p>
+              <li key={c.id} id={c.id} className="scroll-mt-28">
+                <div className="flex h-10 w-10 items-center text-sky-600" aria-hidden>
+                  <Icon />
                 </div>
+                <h3 className="mt-4 text-lg font-bold text-slate-900">{c.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">{c.blurb}</p>
               </li>
             );
           })}

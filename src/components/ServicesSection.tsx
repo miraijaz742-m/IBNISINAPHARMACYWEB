@@ -4,10 +4,7 @@ const ServiceIcons = [PillIcon, ClipboardIcon, ChatIcon, SparklesIcon, FirstAidI
 
 export function ServicesSection() {
   return (
-    <section
-      id="services"
-      className="scroll-mt-24 border-t border-sky-100/60 bg-gradient-to-b from-slate-50 via-white to-slate-50/80 section-y"
-    >
+    <section id="services" className="scroll-mt-24 w-full bg-sky-50 py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">What we offer</p>
         <h2 className="section-title">Pharmacy services</h2>
@@ -15,25 +12,18 @@ export function ServicesSection() {
           In-store dispensing, counselling, and wellness essentials—focused on face-to-face care at the
           counter.
         </p>
-        <ul className="section-body grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        <ul className="section-body mx-auto max-w-3xl divide-y divide-sky-200/80">
           {services.map((s, i) => {
             const Icon = ServiceIcons[i];
             return (
               <li
                 key={s}
-                className="atm-card-face group flex flex-col rounded-xl border border-sky-300/55 bg-transparent transition duration-200 hover:border-sky-400/70 hover:shadow-[0_16px_44px_-14px_rgba(56,189,248,0.35)]"
+                className="flex flex-col items-center gap-3 py-8 text-center first:pt-4 sm:flex-row sm:items-start sm:gap-5 sm:py-10 sm:text-left md:gap-6"
               >
-                <div className="atm-card-face__content flex flex-1 flex-col card-pad pt-5">
-                  <div
-                    className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/95 bg-white/90 text-secondary shadow-sm ring-1 ring-sky-300/50 backdrop-blur-[2px]"
-                    aria-hidden
-                  >
-                    {Icon ? <Icon /> : null}
-                  </div>
-                  <p className="mt-auto text-[15px] font-semibold leading-snug tracking-tight text-slate-800">
-                    {s}
-                  </p>
-                </div>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center text-sky-600" aria-hidden>
+                  {Icon ? <Icon /> : null}
+                </span>
+                <p className="max-w-xl pt-0 text-lg font-semibold leading-snug text-slate-900 sm:pt-1 sm:text-xl">{s}</p>
               </li>
             );
           })}

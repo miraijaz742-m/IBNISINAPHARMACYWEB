@@ -7,43 +7,35 @@ export function TrustSection() {
     <section
       id="trust"
       aria-labelledby="trust-heading"
-      className="scroll-mt-24 border-t border-slate-900/15 bg-gradient-to-b from-hero via-secondary to-hero-deep section-y text-white"
+      className="scroll-mt-24 w-full border-t border-sky-200/80 bg-sky-100 py-20 md:py-24 lg:py-28"
     >
       <div className="section-inner-wide">
-        <header className="mx-auto max-w-3xl text-center px-0">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-sky-100">
-            Why choose us
-          </p>
+        <header className="mx-auto max-w-3xl px-0 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">Why choose us</p>
           <h2
             id="trust-heading"
-            className="mt-3 text-balance text-[1.65rem] font-bold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl"
+            className="mt-3 text-balance text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-[2.5rem] md:leading-[1.15]"
           >
             Care you can trust
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-sky-50 sm:text-base md:text-[17px]">
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
             Licensed retail pharmacy with transparent pricing and products sourced through authorised
             channels—here to support walk-in patients every day.
           </p>
         </header>
 
-        <ul className="section-body grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <ul className="section-body grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {trustItems.map((t, i) => {
             const Icon = icons[i] ?? ShieldCheckIcon;
             return (
-              <li
-                key={t}
-                className="atm-card-face flex min-h-[5.5rem] items-stretch rounded-2xl border border-sky-200/80 bg-transparent transition hover:border-sky-300/90 hover:shadow-[0_16px_44px_-12px_rgba(15,23,42,0.2)]"
-              >
-                <div className="atm-card-face__content flex w-full items-center gap-4 card-pad">
-                  <span
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/95 bg-white/90 text-secondary shadow-sm ring-1 ring-sky-300/50 backdrop-blur-[2px]"
-                    aria-hidden
-                  >
+              <li key={t}>
+                <div className="flex gap-4 lg:flex-col lg:gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center text-sky-600 lg:h-11 lg:w-11" aria-hidden>
                     <Icon />
                   </span>
-                  <span className="text-left text-[15px] font-semibold leading-snug text-slate-900">
+                  <p className="pt-0.5 text-left text-base font-semibold leading-snug text-slate-900 lg:pt-0">
                     {t}
-                  </span>
+                  </p>
                 </div>
               </li>
             );

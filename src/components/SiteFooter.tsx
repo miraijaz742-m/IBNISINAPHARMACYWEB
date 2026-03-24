@@ -5,8 +5,8 @@ export function SiteFooter() {
   const facebook = site.social.facebook?.trim();
 
   return (
-    <footer className="border-t border-primary-hover/40 bg-primary text-white">
-      <div className="section-inner py-10 sm:py-12">
+    <footer className="border-t border-sky-700/30 bg-sky-800 text-white">
+      <div className="section-inner pb-[max(2.5rem,env(safe-area-inset-bottom,0px))] pt-10 sm:pb-[max(3rem,env(safe-area-inset-bottom,0px))] sm:pt-12">
         <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
           <div className="text-center md:text-left">
             <p className="text-xl font-bold">{site.name}</p>
