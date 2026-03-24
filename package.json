@@ -6,15 +6,18 @@
     "dev": "next dev --turbopack",
     "dev:webpack": "next dev",
     "build": "next build",
+    "build:static": "node scripts/static-export-build.cjs",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build",
-    "deploy:firebase": "next build && firebase deploy --only hosting"
+    "deploy:firebase": "npm run build:static && firebase deploy --only hosting"
   },
   "dependencies": {
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "devDependencies": {
     "firebase-tools": "^14.0.0",

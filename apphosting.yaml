@@ -1,0 +1,5 @@
+# Firebase App Hosting (GitHub rollouts) — Next.js runs on Cloud Run, not static `out/`.
+# https://firebase.google.com/docs/app-hosting/configure
+runConfig:
+  cpu: 1
+  memoryMiB: 1024
