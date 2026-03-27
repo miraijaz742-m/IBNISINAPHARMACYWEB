@@ -126,28 +126,28 @@ export function Hero() {
                 {heroCopy.sub}
               </p>
 
-              <div className="mx-auto mt-7 grid w-full max-w-md grid-cols-1 gap-3.5 sm:mt-10 sm:max-w-2xl sm:grid-cols-3 sm:gap-3 lg:gap-4">
+              <div className="mx-auto mt-7 grid w-full max-w-md grid-cols-1 gap-4 sm:mt-10 sm:max-w-2xl sm:grid-cols-3 sm:gap-3 lg:gap-4">
                 <a
                   href={getGoogleMapsUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${ctaBase} bg-slate-200/95 text-slate-900 shadow-matte-sm ring-1 ring-white/25 hover:bg-slate-200`}
+                  className={`${ctaBase} bg-white text-slate-900 shadow-matte-sm ring-1 ring-slate-200/50 hover:bg-slate-50`}
                 >
-                  <MapPinIcon className="h-[1.125rem] w-[1.125rem] shrink-0 opacity-90 transition-transform duration-200 group-hover:-translate-y-px" />
+                  <MapPinIcon className="h-[1.125rem] w-[1.125rem] shrink-0 text-primary transition-transform duration-200 group-hover:-translate-y-px" />
                   <span>{heroCopy.ctaVisit}</span>
                 </a>
                 <a
                   href={`tel:${site.phoneE164}`}
-                  className={`${ctaBase} bg-white/96 text-slate-900 shadow-matte-sm ring-1 ring-white/35 hover:bg-white hover:text-slate-900`}
+                  className={`${ctaBase} bg-white text-slate-900 shadow-matte-sm ring-1 ring-slate-200/50 hover:bg-slate-50`}
                 >
-                  <PhoneIcon className="h-[1.125rem] w-[1.125rem] shrink-0 text-sky-600 transition-transform duration-200 group-hover:scale-105" />
+                  <PhoneIcon className="h-[1.125rem] w-[1.125rem] shrink-0 text-primary transition-transform duration-200 group-hover:scale-105" />
                   <span>{heroCopy.ctaCall}</span>
                 </a>
                 <a
                   href={availabilityHref}
-                  className={`${ctaBase} bg-primary text-white shadow-matte ring-1 ring-white/20 hover:bg-primary-hover`}
+                  className={`${ctaBase} bg-primary text-white shadow-matte hover:bg-primary-hover`}
                 >
-                  <ClipboardIcon className="h-[1.125rem] w-[1.125rem] shrink-0 opacity-95 transition-transform duration-200 group-hover:-translate-y-px" />
+                  <ClipboardIcon className="h-[1.125rem] w-[1.125rem] shrink-0 text-white/90 transition-transform duration-200 group-hover:-translate-y-px" />
                   <span>{heroCopy.ctaAvailability}</span>
                 </a>
               </div>

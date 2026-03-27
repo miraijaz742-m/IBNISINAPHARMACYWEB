@@ -15,25 +15,15 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-[100] border-b border-slate-200/50 bg-[#fafbfc]/85 backdrop-blur-md shadow-matte-sm">
       <div className="section-inner-wide">
-        <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-x-2 gap-y-1 py-2 sm:grid-cols-[3rem_minmax(0,1fr)_3rem] sm:gap-x-3 sm:py-2.5 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:items-center lg:gap-5 lg:py-2.5">
-          <div className="col-start-1 row-start-1 flex justify-self-start lg:hidden">
-            <a
-              href={`tel:${site.phoneE164}`}
-              className="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-lg border border-sky-200 bg-sky-50 px-2 text-primary transition active:scale-[0.98] active:bg-sky-100"
-              aria-label={`Call ${site.phoneDisplay}`}
-            >
-              <PhoneGlyph className="h-[1.35rem] w-[1.35rem]" />
-            </a>
-          </div>
-
+        <div className="grid grid-cols-[1fr_auto_auto] items-center gap-x-3 py-1.5 sm:gap-x-4 sm:py-2 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:gap-5 lg:py-2.5">
           <Link
             href="/"
             aria-label={site.name}
-            className="group col-start-2 row-start-1 flex min-h-0 min-w-0 max-w-full flex-col items-center justify-center gap-1 rounded-lg px-1 py-0.5 text-center active:bg-slate-50 sm:flex-row sm:gap-2 sm:py-0 lg:col-start-1 lg:max-w-none lg:flex-row lg:justify-start lg:gap-2.5 lg:justify-self-start lg:pl-0 lg:text-left"
+            className="group col-start-1 row-start-1 flex min-w-0 max-w-full flex-row items-center justify-start gap-2 rounded-lg px-0.5 py-0.5 active:bg-slate-50 lg:max-w-none lg:gap-2.5 lg:justify-self-start lg:pl-0"
             onClick={() => setDrawerOpen(false)}
           >
             <span
-              className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-white sm:h-14 sm:w-14 lg:h-14 lg:w-14"
+              className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white sm:h-12 sm:w-12 lg:h-14 lg:w-14"
               aria-hidden
             >
               <Image
@@ -41,14 +31,14 @@ export function Navbar() {
                 alt=""
                 fill
                 className="origin-center object-contain object-[48%_52%] -translate-x-[5%] translate-y-[4%] scale-[1.08] transition duration-300 ease-out group-hover:scale-[1.12] group-hover:-translate-x-[4%] group-hover:translate-y-[3%]"
-                sizes="(max-width: 1023px) 56px, 56px"
+                sizes="(max-width: 1023px) 48px, 56px"
                 priority
                 unoptimized
               />
             </span>
             <div className="min-w-0 max-w-full lg:flex-1 lg:text-left">
-              <p className="leading-none">
-                <span className="text-balance text-[0.875rem] font-bold tracking-tight text-primary sm:text-[0.9375rem] lg:text-base">
+              <p className="leading-tight">
+                <span className="text-balance text-[0.9375rem] font-bold tracking-tight text-primary sm:text-base lg:text-base">
                   {site.name}
                 </span>
               </p>
@@ -122,15 +112,26 @@ export function Navbar() {
             </div>
           </div>
 
+          {/* Mobile Right-Side Actions (Call & Menu) */}
+          <div className="col-start-2 row-start-1 flex shrink-0 items-center gap-1.5 lg:hidden">
+            <a
+              href={`tel:${site.phoneE164}`}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-sky-200 bg-sky-50 text-primary transition active:scale-[0.98] active:bg-sky-100"
+              aria-label={`Call ${site.phoneDisplay}`}
+            >
+              <PhoneGlyph className="h-[1.15rem] w-[1.15rem]" />
+            </a>
+          </div>
+
           <div className="col-start-3 row-start-1 flex shrink-0 justify-self-end lg:hidden">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition active:bg-slate-100"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-700 transition active:bg-slate-100"
               aria-expanded={drawerOpen}
               aria-label={drawerOpen ? "Close menu" : "Open menu"}
               onClick={() => setDrawerOpen((o) => !o)}
             >
-              {drawerOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+              {drawerOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-6 w-6" />}
             </button>
           </div>
         </div>
