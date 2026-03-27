@@ -128,11 +128,13 @@ body > * {
 }
 
 /* Category carousel — scrollable but no visible scrollbar */
-.categories-scroll {
+.categories-scroll,
+.no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.categories-scroll::-webkit-scrollbar {
+.categories-scroll::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
