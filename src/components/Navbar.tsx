@@ -6,215 +6,103 @@ import { useState } from "react";
 import { availabilityHref, getHeroImageSrc, pageNavGroups, site } from "@/lib/site";
 
 /**
- * Header — brand left | SaaS-style grouped nav (dropdowns) | contact right.
+ * Header — floating pill design / high-end medical aesthetic.
  */
 export function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [mobileOpenGroup, setMobileOpenGroup] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-[100] border-b border-slate-200/50 bg-[#fafbfc]/85 backdrop-blur-md shadow-matte-sm">
-      <div className="section-inner-wide">
-        <div className="grid grid-cols-[1fr_auto_auto] items-center gap-x-3 py-1.5 sm:gap-x-4 sm:py-2 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:gap-5 lg:py-2.5">
-          <Link
-            href="/"
-            aria-label={site.name}
-            className="group col-start-1 row-start-1 flex min-w-0 max-w-full flex-row items-center justify-start gap-2 rounded-lg px-0.5 py-0.5 active:bg-slate-50 lg:max-w-none lg:gap-2.5 lg:justify-self-start lg:pl-0"
-            onClick={() => setDrawerOpen(false)}
-          >
-            <span
-              className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white sm:h-12 sm:w-12 lg:h-14 lg:w-14"
-              aria-hidden
-            >
-              <Image
-                src={getHeroImageSrc()}
-                alt=""
-                fill
-                className="origin-center object-contain object-[48%_52%] -translate-x-[5%] translate-y-[4%] scale-[1.08] transition duration-300 ease-out group-hover:scale-[1.12] group-hover:-translate-x-[4%] group-hover:translate-y-[3%]"
-                sizes="(max-width: 1023px) 48px, 56px"
-                priority
-                unoptimized
-              />
-            </span>
-            <div className="min-w-0 max-w-full lg:flex-1 lg:text-left">
-              <p className="leading-tight">
-                <span className="text-balance text-[0.9375rem] font-bold tracking-tight text-primary sm:text-base lg:text-base">
-                  {site.name}
-                </span>
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop: grouped dropdowns */}
-          <nav className="col-start-2 row-start-1 hidden min-w-0 lg:block lg:justify-self-center" aria-label="On this page">
-            <ul className="flex flex-wrap items-center justify-center gap-x-0.5 gap-y-1 xl:gap-x-1">
-              {pageNavGroups.map((g) => (
-                <li key={g.id} className="group relative">
-                  <button
-                    type="button"
-                    className="flex items-center gap-0.5 rounded-md px-2 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-800 outline-none transition hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 xl:px-2.5 xl:text-[11px]"
-                    aria-expanded="false"
-                    aria-haspopup="menu"
-                    aria-controls={`nav-panel-${g.id}`}
-                    id={`nav-trigger-${g.id}`}
-                  >
-                    {g.label}
-                    <ChevronDownIcon className="h-3 w-3 shrink-0 text-slate-500 transition duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
-                  </button>
-                  <div
-                    id={`nav-panel-${g.id}`}
-                    role="menu"
-                    aria-labelledby={`nav-trigger-${g.id}`}
-                    className="invisible absolute left-1/2 top-full z-[70] w-max min-w-[12rem] -translate-x-1/2 pt-1.5 opacity-0 transition duration-150 ease-out group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
-                  >
-                    <ul className="rounded-xl border border-slate-200/80 bg-[#fcfcfd] py-1.5 shadow-matte-lg ring-1 ring-slate-900/[0.035]">
-                      {g.items.map((item) => (
-                        <li key={item.href} role="none">
-                          <a
-                            role="menuitem"
-                            href={item.href}
-                            className="block whitespace-nowrap px-4 py-2.5 text-left text-[13px] font-medium text-slate-700 transition hover:bg-sky-50 hover:text-primary"
-                          >
-                            {item.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="col-start-3 row-start-1 hidden shrink-0 items-center justify-self-end border-sky-100 lg:flex lg:border-l lg:pl-4">
-            <div className="flex items-center gap-2.5">
-              <span
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sky-50 text-primary ring-1 ring-sky-200/80"
-                aria-hidden
-              >
-                <PhoneGlyph className="h-4 w-4" />
-              </span>
-              <div className="min-w-0 text-left leading-tight">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Call us now</p>
-                <a
-                  href={`tel:${site.phoneE164}`}
-                  className="mt-0.5 block text-sm font-bold tracking-tight text-primary hover:text-primary-hover"
-                >
-                  {site.phoneDisplay}
-                </a>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="mt-0.5 block max-w-[14rem] truncate text-[10px] text-slate-500 transition hover:text-sky-700"
-                >
-                  {site.email}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Right-Side Actions (Call & Menu) */}
-          <div className="col-start-2 row-start-1 flex shrink-0 items-center gap-1.5 lg:hidden">
-            <a
-              href={`tel:${site.phoneE164}`}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-sky-200 bg-sky-50 text-primary transition active:scale-[0.98] active:bg-sky-100"
-              aria-label={`Call ${site.phoneDisplay}`}
-            >
-              <PhoneGlyph className="h-[1.15rem] w-[1.15rem]" />
-            </a>
-          </div>
-
-          <div className="col-start-3 row-start-1 flex shrink-0 justify-self-end lg:hidden">
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-700 transition active:bg-slate-100"
-              aria-expanded={drawerOpen}
-              aria-label={drawerOpen ? "Close menu" : "Open menu"}
-              onClick={() => setDrawerOpen((o) => !o)}
-            >
-              {drawerOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {drawerOpen ? (
-        <div className="max-h-[min(78dvh,calc(100dvh-4.25rem))] overflow-y-auto overscroll-contain border-t border-slate-200/60 bg-[#fafbfc] shadow-inner lg:hidden">
-          <div className="section-inner pb-[max(1.75rem,env(safe-area-inset-bottom,0px))] pt-4 text-center sm:pt-5 sm:text-left">
-            <a
-              href={availabilityHref}
-              className="mb-5 flex min-h-[54px] w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-4 text-base font-semibold text-white shadow-matte active:scale-[0.99] active:bg-primary-hover sm:max-w-none"
+    <header className="sticky top-4 z-[100] mx-auto w-full max-w-7xl px-4 lg:px-8">
+      <div className="rounded-full border border-slate-200/50 bg-white/95 py-2.5 shadow-matte-lg backdrop-blur-md ring-1 ring-slate-900/[0.04]">
+        <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-[1fr_auto_auto] items-center gap-x-3 px-1 sm:gap-x-4 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:gap-8">
+            {/* Brand Logo & Name */}
+            <Link
+              href="/"
+              aria-label={site.name}
+              className="group col-start-1 row-start-1 flex min-w-0 max-w-full flex-row items-center justify-start gap-2.5 rounded-full px-1.5 py-1 active:bg-slate-50 lg:max-w-none lg:gap-3 lg:justify-self-start"
               onClick={() => setDrawerOpen(false)}
             >
-              Check availability
-            </a>
+              <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white shadow-matte-sm sm:h-11 sm:w-11 lg:h-12 lg:w-12">
+                <Image
+                  src={getHeroImageSrc()}
+                  alt=""
+                  fill
+                  className="object-contain transition duration-300 group-hover:scale-110"
+                  sizes="48px"
+                  priority
+                  unoptimized
+                />
+              </div>
+              <span className="truncate text-[0.9375rem] font-bold tracking-tight text-slate-900 sm:text-base lg:text-[1.05rem]">
+                {site.name}
+              </span>
+            </Link>
 
-            <div className="mb-6 rounded-2xl border border-sky-200/80 bg-gradient-to-b from-sky-50 to-sky-50/50 p-5 sm:text-left">
-              <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-4 sm:text-left">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-matte-sm ring-1 ring-slate-200/70">
-                  <PhoneGlyph className="h-6 w-6" />
-                </span>
-                <div className="min-w-0 w-full max-w-sm flex-1 space-y-3 sm:max-w-none">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Call us now</p>
-                    <a
-                      href={`tel:${site.phoneE164}`}
-                      className="mt-1 block text-lg font-bold leading-tight text-primary active:underline"
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      {site.phoneDisplay}
-                    </a>
-                  </div>
-                  <div className="border-t border-sky-200/60 pt-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Alternate</p>
-                    <a
-                      href={`tel:${site.phoneSecondaryE164}`}
-                      className="mt-1 block text-[15px] font-semibold text-slate-800 active:text-primary"
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      {site.phoneSecondaryDisplay}
-                    </a>
-                  </div>
-                  <div className="border-t border-sky-200/60 pt-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Email</p>
-                    <a
-                      href={`mailto:${site.email}`}
-                      className="mt-1 break-all text-[15px] font-medium leading-snug text-sky-800 active:underline"
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      {site.email}
-                    </a>
-                  </div>
-                </div>
+            {/* Desktop: Navigation */}
+            <nav className="col-start-2 row-start-1 hidden min-w-0 lg:block lg:justify-self-center" aria-label="On this page">
+              <ul className="flex items-center gap-1 xl:gap-2">
+                {pageNavGroups.map((g) => (
+                  <li key={g.id} className="relative group/nav">
+                    <button className="rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-600 transition hover:bg-slate-50 hover:text-primary">
+                      {g.label}
+                    </button>
+                    {/* Dropdown can go here if needed, keeping it flat for "MedMe" look */}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Actions */}
+            <div className="col-start-2 row-start-1 flex items-center gap-2 lg:col-start-3 lg:justify-self-end">
+              <a
+                href={availabilityHref}
+                className="hidden rounded-full bg-slate-900 px-6 py-2.5 text-sm font-bold text-white shadow-matte transition hover:bg-slate-800 active:scale-[0.98] lg:block"
+              >
+                Book Appointment
+              </a>
+              
+              <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
+                <a
+                  href={`tel:${site.phoneE164}`}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-sky-50 text-primary transition active:bg-sky-100"
+                >
+                  <PhoneGlyph className="h-4.5 w-4.5" />
+                </a>
+                <button
+                  type="button"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 active:bg-slate-100"
+                  onClick={() => setDrawerOpen(!drawerOpen)}
+                >
+                  {drawerOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-6 w-6" />}
+                </button>
               </div>
             </div>
+          </div>
+        </div>
 
-            <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-left">Browse</p>
-            <nav className="rounded-xl border border-slate-100 bg-slate-50/50" aria-label="On this page">
-              {pageNavGroups.map((g) => {
-                const expanded = mobileOpenGroup === g.id;
-                return (
-                  <div key={g.id} className="border-b border-slate-100 last:border-b-0">
-                    <button
-                      type="button"
-                      className="flex w-full min-h-[54px] items-center justify-center gap-2 px-3 py-2 text-center text-[13px] font-semibold uppercase tracking-wide text-slate-800 active:bg-white sm:justify-between sm:px-4 sm:text-left"
-                      aria-expanded={expanded}
-                      onClick={() => setMobileOpenGroup((x) => (x === g.id ? null : g.id))}
-                    >
-                      <span className="text-balance sm:pr-2">{g.label}</span>
-                      <ChevronDownIcon
-                        className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    <ul className={expanded ? "space-y-0.5 border-t border-slate-100 bg-white px-2 py-2" : "hidden"}>
+        {/* Mobile Menu */}
+        {drawerOpen ? (
+          <div className="max-h-[min(70dvh,calc(100dvh-6rem))] overflow-y-auto rounded-b-[2.5rem] bg-white pt-2 lg:hidden">
+            <div className="px-6 pb-8 pt-4">
+              <a
+                href={availabilityHref}
+                className="mb-8 flex min-h-[54px] w-full items-center justify-center rounded-full bg-slate-900 text-base font-bold text-white shadow-matte"
+                onClick={() => setDrawerOpen(false)}
+              >
+                Book Appointment
+              </a>
+              <nav className="space-y-6">
+                {pageNavGroups.map((g) => (
+                  <div key={g.id}>
+                    <p className="px-1 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">{g.label}</p>
+                    <ul className="mt-3 grid grid-cols-1 gap-2">
                       {g.items.map((item) => (
                         <li key={item.href}>
                           <a
                             href={item.href}
-                            className="flex min-h-[48px] items-center justify-center rounded-xl py-3 pl-4 pr-3 text-center text-[15px] font-medium text-slate-700 active:bg-sky-100 sm:justify-start sm:text-left"
-                            onClick={() => {
-                              setDrawerOpen(false);
-                              setMobileOpenGroup(null);
-                            }}
+                            className="flex min-h-[48px] items-center rounded-2xl bg-slate-50 px-5 text-[15px] font-semibold text-slate-700 active:bg-primary/5 active:text-primary"
+                            onClick={() => setDrawerOpen(false)}
                           >
                             {item.label}
                           </a>
@@ -222,12 +110,12 @@ export function Navbar() {
                       ))}
                     </ul>
                   </div>
-                );
-              })}
-            </nav>
+                ))}
+              </nav>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </header>
   );
 }
