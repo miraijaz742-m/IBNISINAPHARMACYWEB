@@ -193,7 +193,7 @@ export const heroCarouselFilenames = [
 
 /** First hero slide — used by the navbar circular logo */
 export function getHeroImageSrc(): string {
-  return `/${heroCarouselFilenames[0]}?v=${heroImageVersion}`;
+  return `/logo.png?v=${heroImageVersion}`;
 }
 
 export const heroCopy = {

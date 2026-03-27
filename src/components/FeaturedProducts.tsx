@@ -17,7 +17,7 @@ export function FeaturedProducts() {
           {featuredProducts.map((p) => (
             <li
               key={p.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-paper shadow-sm transition hover:border-primary/25 hover:shadow-card"
+              className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/75 bg-paper shadow-matte-sm transition hover:border-primary/22 hover:shadow-matte"
             >
               <div className="h-1.5 bg-gradient-to-r from-primary via-primary to-secondary" />
               <div className="flex flex-1 flex-col p-6">

@@ -101,7 +101,7 @@ export function GalleryGrid({ images }: Props) {
                 src={active.src}
                 alt={active.alt}
                 fill
-                className="object-contain object-center drop-shadow-2xl"
+                className="object-contain object-center drop-shadow-[0_20px_40px_rgb(0_0_0_/_0.2)]"
                 sizes="(max-width: 1024px) 100vw, 1024px"
                 priority
               />

@@ -4,7 +4,7 @@ const ServiceIcons = [PillIcon, ClipboardIcon, ChatIcon, SparklesIcon, FirstAidI
 
 export function ServicesSection() {
   return (
-    <section id="services" className="scroll-mt-24 w-full bg-sky-50 py-20 md:py-24 lg:py-28">
+    <section id="services" className="scroll-mt-24 w-full bg-[#eef2f6] py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">What we offer</p>
         <h2 className="section-title">Pharmacy services</h2>

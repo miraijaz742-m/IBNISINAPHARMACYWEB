@@ -27,13 +27,13 @@ export function CategoriesGrid() {
   return (
     <section
       id="categories"
-      className="scroll-mt-24 border-t border-slate-100/80 bg-gradient-to-b from-slate-50/90 via-white to-white py-14 md:py-20"
+      className="scroll-mt-24 border-t border-slate-200/50 bg-paper py-14 md:py-20"
     >
       <div className="mx-auto max-w-6xl page-px">
         {/* Header */}
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Browse</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink md:text-[2rem]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-500">Browse</p>
+          <h2 className="font-display mt-2 text-3xl font-semibold tracking-[-0.02em] text-ink md:text-[2rem]">
             Medicines &amp; care by category
           </h2>
           <p className="mt-3 text-base leading-relaxed text-slate-600">
@@ -58,7 +58,7 @@ export function CategoriesGrid() {
               <article
                 key={c.slug}
                 id={`cat-${c.slug}`}
-                className={`group relative flex w-[min(100%,268px)] shrink-0 snap-start flex-col overflow-hidden rounded-[1.35rem] border border-white/90 bg-gradient-to-b p-6 shadow-[0_8px_30px_-8px_rgba(26,86,179,0.12),0_4px_12px_-4px_rgba(0,0,0,0.06)] ring-1 ring-slate-200/60 transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(26,86,179,0.18)] hover:ring-2 ${tintClass[c.tint]} ${ringTint[c.tint]}`}
+                className={`group relative flex w-[min(100%,268px)] shrink-0 snap-start flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/55 bg-gradient-to-b p-6 shadow-matte ring-1 ring-slate-900/[0.04] transition duration-300 hover:-translate-y-0.5 hover:shadow-matte-lg hover:ring-slate-900/[0.06] ${tintClass[c.tint]} ${ringTint[c.tint]}`}
               >
                 <div className="relative z-[1]">
                   <h3 className="text-[1.05rem] font-bold leading-snug text-slate-900">
@@ -69,7 +69,7 @@ export function CategoriesGrid() {
                   </p>
                 </div>
 
-                <div className="relative z-[1] mt-5 flex min-h-[132px] flex-1 items-center justify-center rounded-2xl bg-white/75 p-5 shadow-inner ring-1 ring-slate-900/[0.04] backdrop-blur-[2px] transition group-hover:bg-white/90">
+                <div className="relative z-[1] mt-5 flex min-h-[132px] flex-1 items-center justify-center rounded-2xl bg-white/82 p-5 shadow-[inset_0_1px_0_rgb(255_255_255_/_0.65)] ring-1 ring-slate-200/50 backdrop-blur-[1px] transition group-hover:bg-white/90">
                   <CategoryIllustration variant={c.tint} />
                 </div>
 

@@ -9,22 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /** Increment 1 — premium clinical landing (#4DA6FF) */
+        /** Brand primary — user #38B6FF */
         primary: {
-          DEFAULT: "#4DA6FF",
-          hover: "#3B94F0",
-          muted: "rgba(77, 166, 255, 0.12)",
+          DEFAULT: "#38B6FF",
+          hover: "#2CA3EB",
+          muted: "rgba(56, 182, 255, 0.1)",
         },
-        secondary: "#2B7FD4",
+        secondary: "#2A99E0",
         mint: "#5EBB9B",
         hero: {
-          DEFAULT: "#1A56B3",
-          deep: "#0d3d82",
+          DEFAULT: "#1578C4",
+          deep: "#0d4a7a",
         },
         cta: "#5EBB9B",
         "cta-hover": "#4DA88A",
         surface: "#F5F9FC",
-        paper: "#f4f7fa",
+        paper: "#f1f3f6",
+        "paper-warm": "#eeeff2",
         ink: "#0f172a",
         accent: {
           purple: "#7C3AED",
@@ -40,12 +41,20 @@ const config: Config = {
           "Segoe UI",
           "sans-serif",
         ],
+        display: ["var(--font-display)", "Georgia", "ui-serif", "serif"],
         urdu: ["var(--font-urdu)", "Tahoma", "Segoe UI", "sans-serif"],
       },
       boxShadow: {
-        card: "0 4px 24px rgba(77, 166, 255, 0.12), 0 2px 12px rgba(15, 23, 42, 0.06)",
-        lift: "0 12px 40px rgba(77, 166, 255, 0.18), 0 4px 16px rgba(15, 23, 42, 0.08)",
-        glass: "0 8px 32px rgba(15, 23, 42, 0.08)",
+        /** Diffuse, low-contrast — matte finish (no glossy color glow) */
+        matte:
+          "0 1px 0 rgb(255 255 255 / 0.65) inset, 0 22px 48px -28px rgb(15 23 42 / 0.12), 0 8px 20px -12px rgb(15 23 42 / 0.06)",
+        "matte-sm":
+          "0 1px 0 rgb(255 255 255 / 0.5) inset, 0 12px 28px -20px rgb(15 23 42 / 0.1), 0 4px 12px -6px rgb(15 23 42 / 0.05)",
+        "matte-lg":
+          "0 1px 0 rgb(255 255 255 / 0.55) inset, 0 32px 64px -36px rgb(15 23 42 / 0.14), 0 12px 28px -16px rgb(15 23 42 / 0.07)",
+        card: "0 20px 50px -28px rgb(15 23 42 / 0.11), 0 8px 20px -12px rgb(15 23 42 / 0.05)",
+        lift: "0 28px 56px -32px rgb(15 23 42 / 0.12), 0 12px 24px -14px rgb(15 23 42 / 0.06)",
+        glass: "0 12px 40px -16px rgb(15 23 42 / 0.08)",
       },
       backdropBlur: {
         glass: "12px",

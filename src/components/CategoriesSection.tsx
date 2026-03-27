@@ -4,7 +4,7 @@ const icons = [VitaminIcon, DropletIcon, BabyIcon, PillOtcIcon, HeartPulseIcon] 
 
 export function CategoriesSection() {
   return (
-    <section id="categories" className="scroll-mt-24 w-full bg-white py-20 md:py-24 lg:py-28">
+    <section id="categories" className="scroll-mt-24 w-full bg-paper py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">Browse in store</p>
         <h2 className="section-title">Categories</h2>
@@ -19,7 +19,7 @@ export function CategoriesSection() {
                 <div className="flex h-10 w-10 items-center text-sky-600" aria-hidden>
                   <Icon />
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-slate-900">{c.title}</h3>
+                <h3 className="mt-4 text-lg font-semibold tracking-tight text-slate-900">{c.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">{c.blurb}</p>
               </li>
             );

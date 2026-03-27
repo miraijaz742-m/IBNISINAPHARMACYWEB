@@ -13,13 +13,13 @@ export function Navbar() {
   const [mobileOpenGroup, setMobileOpenGroup] = useState<string | null>(null);
 
   return (
-    <header className="relative z-50 border-b border-slate-200/90 bg-white shadow-[0_1px_0_rgb(241_245_249)]">
+    <header className="sticky top-0 z-[100] border-b border-slate-200/50 bg-[#fafbfc]/85 backdrop-blur-md shadow-matte-sm">
       <div className="section-inner-wide">
-        <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-x-2 gap-y-1 py-3 sm:grid-cols-[3rem_minmax(0,1fr)_3rem] sm:gap-x-3 sm:py-3.5 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:items-center lg:gap-6 lg:py-4">
+        <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-x-2 gap-y-1 py-2 sm:grid-cols-[3rem_minmax(0,1fr)_3rem] sm:gap-x-3 sm:py-2.5 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)_minmax(0,auto)] lg:items-center lg:gap-5 lg:py-2.5">
           <div className="col-start-1 row-start-1 flex justify-self-start lg:hidden">
             <a
               href={`tel:${site.phoneE164}`}
-              className="inline-flex h-11 min-w-[2.75rem] items-center justify-center rounded-xl border border-sky-200 bg-sky-50 px-2.5 text-primary transition active:scale-[0.98] active:bg-sky-100"
+              className="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-lg border border-sky-200 bg-sky-50 px-2 text-primary transition active:scale-[0.98] active:bg-sky-100"
               aria-label={`Call ${site.phoneDisplay}`}
             >
               <PhoneGlyph className="h-[1.35rem] w-[1.35rem]" />
@@ -28,36 +28,29 @@ export function Navbar() {
 
           <Link
             href="/"
-            className="group col-start-2 row-start-1 flex min-h-[3.25rem] min-w-0 max-w-full flex-col items-center justify-center gap-1.5 rounded-xl px-1 py-1 text-center active:bg-slate-50 sm:flex-row sm:gap-2.5 sm:py-0 lg:col-start-1 lg:min-h-0 lg:max-w-none lg:flex-row lg:justify-start lg:gap-3 lg:justify-self-start lg:pl-0 lg:text-left"
+            aria-label={site.name}
+            className="group col-start-2 row-start-1 flex min-h-0 min-w-0 max-w-full flex-col items-center justify-center gap-1 rounded-lg px-1 py-0.5 text-center active:bg-slate-50 sm:flex-row sm:gap-2 sm:py-0 lg:col-start-1 lg:max-w-none lg:flex-row lg:justify-start lg:gap-2.5 lg:justify-self-start lg:pl-0 lg:text-left"
             onClick={() => setDrawerOpen(false)}
           >
             <span
-              className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-sky-200 bg-sky-50 ring-2 ring-white sm:h-[3.15rem] sm:w-[3.15rem] lg:h-[3.25rem] lg:w-[3.25rem]"
+              className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-white sm:h-14 sm:w-14 lg:h-14 lg:w-14"
               aria-hidden
             >
               <Image
                 src={getHeroImageSrc()}
                 alt=""
                 fill
-                className="object-cover object-center transition duration-300 ease-out group-hover:scale-[1.04]"
-                sizes="(max-width: 1023px) 52px, 52px"
+                className="origin-center object-contain object-[48%_52%] -translate-x-[5%] translate-y-[4%] scale-[1.08] transition duration-300 ease-out group-hover:scale-[1.12] group-hover:-translate-x-[4%] group-hover:translate-y-[3%]"
+                sizes="(max-width: 1023px) 56px, 56px"
                 priority
                 unoptimized
               />
             </span>
             <div className="min-w-0 max-w-full lg:flex-1 lg:text-left">
-              <p className="text-balance text-[0.875rem] font-bold leading-snug tracking-tight text-primary sm:text-base lg:text-lg">
-                {site.name}
-              </p>
-              <p className="mt-0.5 line-clamp-2 text-[10px] font-medium leading-snug text-slate-500 sm:line-clamp-1 sm:text-[11px] lg:text-xs">
-                {site.tagline}
-              </p>
-              <p
-                lang="ur"
-                dir="rtl"
-                className="font-urdu mt-0.5 line-clamp-1 text-[0.65rem] font-semibold leading-snug text-sky-700 sm:mt-0.5 sm:text-[0.72rem] lg:text-[0.78rem]"
-              >
-                {site.nameUrdu}
+              <p className="leading-none">
+                <span className="text-balance text-[0.875rem] font-bold tracking-tight text-primary sm:text-[0.9375rem] lg:text-base">
+                  {site.name}
+                </span>
               </p>
             </div>
           </Link>
@@ -69,7 +62,7 @@ export function Navbar() {
                 <li key={g.id} className="group relative">
                   <button
                     type="button"
-                    className="flex items-center gap-0.5 rounded-md px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-800 outline-none transition hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 xl:px-2.5 xl:text-[11px]"
+                    className="flex items-center gap-0.5 rounded-md px-2 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-800 outline-none transition hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 xl:px-2.5 xl:text-[11px]"
                     aria-expanded="false"
                     aria-haspopup="menu"
                     aria-controls={`nav-panel-${g.id}`}
@@ -84,7 +77,7 @@ export function Navbar() {
                     aria-labelledby={`nav-trigger-${g.id}`}
                     className="invisible absolute left-1/2 top-full z-[70] w-max min-w-[12rem] -translate-x-1/2 pt-1.5 opacity-0 transition duration-150 ease-out group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
                   >
-                    <ul className="rounded-xl border border-slate-200/90 bg-white py-1.5 shadow-lg shadow-slate-900/[0.08] ring-1 ring-slate-900/[0.04]">
+                    <ul className="rounded-xl border border-slate-200/80 bg-[#fcfcfd] py-1.5 shadow-matte-lg ring-1 ring-slate-900/[0.035]">
                       {g.items.map((item) => (
                         <li key={item.href} role="none">
                           <a
@@ -103,25 +96,25 @@ export function Navbar() {
             </ul>
           </nav>
 
-          <div className="col-start-3 row-start-1 hidden shrink-0 items-center justify-self-end border-sky-100 lg:flex lg:border-l lg:pl-6">
-            <div className="flex items-start gap-3">
+          <div className="col-start-3 row-start-1 hidden shrink-0 items-center justify-self-end border-sky-100 lg:flex lg:border-l lg:pl-4">
+            <div className="flex items-center gap-2.5">
               <span
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sky-50 text-primary ring-1 ring-sky-200/80"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sky-50 text-primary ring-1 ring-sky-200/80"
                 aria-hidden
               >
-                <PhoneGlyph className="h-5 w-5" />
+                <PhoneGlyph className="h-4 w-4" />
               </span>
-              <div className="min-w-0 pt-0.5 text-left">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Call us now</p>
+              <div className="min-w-0 text-left leading-tight">
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Call us now</p>
                 <a
                   href={`tel:${site.phoneE164}`}
-                  className="mt-0.5 block text-sm font-bold tracking-tight text-primary hover:text-primary-hover sm:text-base"
+                  className="mt-0.5 block text-sm font-bold tracking-tight text-primary hover:text-primary-hover"
                 >
                   {site.phoneDisplay}
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="mt-1 block max-w-[14rem] truncate text-[11px] text-slate-500 transition hover:text-sky-700"
+                  className="mt-0.5 block max-w-[14rem] truncate text-[10px] text-slate-500 transition hover:text-sky-700"
                 >
                   {site.email}
                 </a>
@@ -132,7 +125,7 @@ export function Navbar() {
           <div className="col-start-3 row-start-1 flex shrink-0 justify-self-end lg:hidden">
             <button
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 transition active:bg-slate-100"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition active:bg-slate-100"
               aria-expanded={drawerOpen}
               aria-label={drawerOpen ? "Close menu" : "Open menu"}
               onClick={() => setDrawerOpen((o) => !o)}
@@ -144,11 +137,11 @@ export function Navbar() {
       </div>
 
       {drawerOpen ? (
-        <div className="max-h-[min(78dvh,calc(100dvh-5.5rem))] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white shadow-inner lg:hidden">
+        <div className="max-h-[min(78dvh,calc(100dvh-4.25rem))] overflow-y-auto overscroll-contain border-t border-slate-200/60 bg-[#fafbfc] shadow-inner lg:hidden">
           <div className="section-inner pb-[max(1.75rem,env(safe-area-inset-bottom,0px))] pt-4 text-center sm:pt-5 sm:text-left">
             <a
               href={availabilityHref}
-              className="mb-5 flex min-h-[54px] w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-4 text-base font-semibold text-white shadow-md shadow-primary/25 active:scale-[0.99] active:bg-primary-hover sm:max-w-none"
+              className="mb-5 flex min-h-[54px] w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-4 text-base font-semibold text-white shadow-matte active:scale-[0.99] active:bg-primary-hover sm:max-w-none"
               onClick={() => setDrawerOpen(false)}
             >
               Check availability
@@ -156,7 +149,7 @@ export function Navbar() {
 
             <div className="mb-6 rounded-2xl border border-sky-200/80 bg-gradient-to-b from-sky-50 to-sky-50/50 p-5 sm:text-left">
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-4 sm:text-left">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm ring-1 ring-sky-100">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-matte-sm ring-1 ring-slate-200/70">
                   <PhoneGlyph className="h-6 w-6" />
                 </span>
                 <div className="min-w-0 w-full max-w-sm flex-1 space-y-3 sm:max-w-none">

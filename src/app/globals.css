@@ -3,29 +3,50 @@
 @tailwind utilities;
 
 :root {
-  --primary: #4da6ff;
-  --primary-hover: #3b94f0;
-  --secondary: #2b7fd4;
-  --mint: #5ebb9b;
+  --primary: #38b6ff;
+  --primary-hover: #2ca3eb;
+  --secondary: #2a99e0;
+  --mint: #52a88e;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/**
+ * Matte paper base + subtle film grain (premium, non-glossy).
+ * Grain sits behind in-flow content via fixed layer + z-index 0.
+ */
 body {
-  @apply bg-paper text-slate-800 antialiased;
+  @apply min-h-screen bg-paper text-slate-800 antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Pharmacy landing — subtle clinical grid on hero-adjacent areas */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Pharmacy landing — soft dot grid, matte (low contrast) */
 .pharmacy-section-alt {
-  background-color: #f8fafc;
+  background-color: #f0f2f5;
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(148 163 184 / 0.12) 1px,
+    rgb(148 163 184 / 0.085) 1px,
     transparent 0
   );
-  background-size: 24px 24px;
+  background-size: 22px 22px;
 }
 
 @layer utilities {
@@ -79,15 +100,16 @@ body {
   }
 
   .section-eyebrow {
-    @apply text-center text-xs font-semibold uppercase tracking-[0.22em] text-sky-600;
+    @apply text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-500;
   }
 
   .section-title {
-    @apply mt-3 text-center text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-[2.5rem] md:leading-[1.15];
+    font-family: var(--font-display), Georgia, ui-serif, serif;
+    @apply mt-3 text-center text-3xl font-semibold leading-[1.12] tracking-[-0.02em] text-slate-900 sm:text-4xl md:text-[2.45rem] md:leading-[1.12];
   }
 
   .section-intro {
-    @apply mx-auto mt-5 max-w-2xl px-0 text-center text-base leading-relaxed text-slate-600 sm:text-lg;
+    @apply mx-auto mt-5 max-w-2xl px-0 text-center text-base font-normal leading-relaxed text-slate-600 sm:text-lg;
   }
 
   /** Space from intro / title block to content */
