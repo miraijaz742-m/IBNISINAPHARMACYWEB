@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
+import { X } from "lucide-react";
 
 export type GalleryImageItem = {
   readonly src: string;
@@ -52,29 +53,32 @@ export function GalleryGrid({ images }: Props) {
   return (
     <>
       <ul className="section-body grid grid-cols-2 gap-3 sm:gap-3.5 md:grid-cols-3 md:gap-4">
-        {images.map((img, i) => (
-          <li key={img.src} className="min-w-0">
-            <button
-              type="button"
-              onClick={() => setOpenIndex(i)}
-              className="group relative aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-md bg-slate-100 text-left ring-0 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-50"
-              aria-label={`View larger: ${img.alt}`}
+        {images.map((img, i) => {
+          const isLast = i === images.length - 1;
+          const isOddCount = images.length % 2 !== 0;
+
+          return (
+            <li 
+              key={img.src} 
+              className={`min-w-0 ${isLast && isOddCount ? "col-span-2 flex justify-center md:col-span-1 md:block" : ""}`}
             >
-              <Image
-                src={img.src}
-                alt=""
-                fill
-                className="object-cover transition duration-300 ease-out motion-safe:group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/55 to-transparent px-2 py-2 pt-8">
-                <span className="line-clamp-2 text-[11px] font-medium leading-snug text-white/95 sm:text-xs">
-                  {img.alt}
-                </span>
-              </span>
-            </button>
-          </li>
-        ))}
+              <button
+                type="button"
+                onClick={() => setOpenIndex(i)}
+                className={`group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-3xl bg-slate-100 text-left shadow-matte-sm border border-sky-200 transition duration-300 hover:-translate-y-1 hover:shadow-matte-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isLast && isOddCount ? "w-1/2 md:w-full" : "w-full"}`}
+                aria-label={`View larger: ${img.alt}`}
+              >
+                <Image
+                  src={img.src}
+                  alt=""
+                  fill
+                  className="object-cover transition duration-300 ease-out motion-safe:group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       {active && openIndex !== null ? (
@@ -107,9 +111,6 @@ export function GalleryGrid({ images }: Props) {
               />
             </div>
 
-            <p className="relative z-10 max-w-2xl text-center text-sm font-medium text-white/90 sm:text-base">
-              {active.alt}
-            </p>
 
             <div className="relative z-10 flex flex-wrap items-center justify-center gap-2">
               <button
@@ -142,7 +143,7 @@ export function GalleryGrid({ images }: Props) {
             className="absolute right-[max(0.75rem,env(safe-area-inset-right,0px))] top-[max(0.75rem,env(safe-area-inset-top,0px))] z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 sm:right-5 sm:top-5"
             aria-label="Close"
           >
-            <CloseIcon />
+            <X className="h-6 w-6" strokeWidth={1.5} />
           </button>
         </div>
       ) : null}
@@ -150,10 +151,3 @@ export function GalleryGrid({ images }: Props) {
   );
 }
 
-function CloseIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}

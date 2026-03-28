@@ -1,39 +1,36 @@
 import { trustItems } from "@/lib/site";
+import { ShieldCheck, Tag, Users, Zap } from "lucide-react";
 
-const icons = [ShieldCheckIcon, TagIcon, UsersIcon, BoltIcon] as const;
-
+const icons = [ShieldCheck, Tag, Users, Zap] as const;
 export function TrustSection() {
   return (
     <section
       id="trust"
       aria-labelledby="trust-heading"
-      className="scroll-mt-24 w-full border-t border-sky-200/80 bg-sky-100 py-20 md:py-24 lg:py-28"
+      className="scroll-mt-24 w-full bg-premium-light py-20 md:py-24 lg:py-28"
     >
       <div className="section-inner-wide">
         <header className="mx-auto max-w-3xl px-0 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">Why choose us</p>
-          <h2
-            id="trust-heading"
-            className="mt-3 text-balance text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-[2.5rem] md:leading-[1.15]"
-          >
+          <p className="section-eyebrow">Why choose us</p>
+          <h2 id="trust-heading" className="section-title">
             Care you can trust
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="section-intro">
             Licensed retail pharmacy with transparent pricing and products sourced through authorised
             channels—here to support walk-in patients every day.
           </p>
         </header>
 
-        <ul className="section-body grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <ul className="section-body grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {trustItems.map((t, i) => {
-            const Icon = icons[i] ?? ShieldCheckIcon;
+            const Icon = icons[i] ?? ShieldCheck;
             return (
-              <li key={t}>
-                <div className="flex gap-4 lg:flex-col lg:gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center text-sky-600 lg:h-11 lg:w-11" aria-hidden>
-                    <Icon />
+              <li key={t} className="flex">
+                <div className="flex w-full flex-col items-center text-center sm:items-start sm:text-left p-6 sm:p-8 bg-white rounded-3xl shadow-matte-sm ring-1 ring-slate-200/50 hover:-translate-y-1 hover:shadow-matte-lg transition duration-300">
+                  <span className="mb-4 sm:mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary" aria-hidden>
+                    <Icon className="h-7 w-7" strokeWidth={1.5} />
                   </span>
-                  <p className="pt-0.5 text-left text-base font-semibold leading-snug text-slate-900 lg:pt-0">
+                  <p className="text-[17px] font-bold leading-snug text-slate-900">
                     {t}
                   </p>
                 </div>
@@ -46,54 +43,3 @@ export function TrustSection() {
   );
 }
 
-function ShieldCheckIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.8}
-        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-      />
-    </svg>
-  );
-}
-
-function TagIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.8}
-        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-      />
-    </svg>
-  );
-}
-
-function UsersIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.8}
-        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-      />
-    </svg>
-  );
-}
-
-function BoltIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.8}
-        d="M13 10V3L4 14h7v7l9-11h-7z"
-      />
-    </svg>
-  );
-}

@@ -5,7 +5,7 @@ import { GallerySection } from "@/components/GallerySection";
 import { Hero } from "@/components/Hero";
 import { InStoreSection } from "@/components/InStoreSection";
 import { MedicineAvailabilitySection } from "@/components/MedicineAvailabilitySection";
-import { MobileQuickHub } from "@/components/MobileQuickHub";
+
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -16,7 +16,7 @@ export default function HomePage() {
     <>
       <main className="min-h-screen">
         <Hero />
-        <MobileQuickHub />
+
         <AboutSection />
         <ServicesSection />
         <CategoriesSection />

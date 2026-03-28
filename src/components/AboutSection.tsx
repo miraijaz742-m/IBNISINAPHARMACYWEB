@@ -1,4 +1,5 @@
 import { aboutText, site } from "@/lib/site";
+import { Check } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -9,42 +10,36 @@ export function AboutSection() {
             <p className="section-eyebrow lg:text-left">Our store</p>
             <h2 className="section-title lg:text-left">About {site.name}</h2>
             <p className="section-intro lg:mx-0 lg:max-w-none lg:text-left">{aboutText}</p>
-            <ul className="section-body flex flex-col gap-6 text-center text-base text-slate-700 sm:text-left lg:items-start">
-              <li className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center text-sky-600 sm:mt-1" aria-hidden>
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+            <ul className="section-body flex flex-col gap-6 text-center text-[15px] font-medium text-slate-700 sm:text-left lg:items-start">
+              <li className="flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary" aria-hidden>
+                  <Check className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <span className="max-w-md sm:max-w-none">Walk-in counter for purchases, advice, and billing</span>
+                <span className="max-w-md sm:max-w-none sm:pt-1">Walk-in counter for purchases, advice, and billing</span>
               </li>
-              <li className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center text-sky-600 sm:mt-1" aria-hidden>
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+              <li className="flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary" aria-hidden>
+                  <Check className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <span className="max-w-md sm:max-w-none">
+                <span className="max-w-md sm:max-w-none sm:pt-1">
                   Prescription checks—message us to confirm availability before visiting
                 </span>
               </li>
-              <li className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:gap-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center text-sky-600 sm:mt-1" aria-hidden>
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+              <li className="flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary" aria-hidden>
+                  <Check className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <span className="max-w-md sm:max-w-none">Genuine stock, clear labels, and patient safety first</span>
+                <span className="max-w-md sm:max-w-none sm:pt-1">Genuine stock, clear labels, and patient safety first</span>
               </li>
             </ul>
           </div>
-          <div className="bg-sky-50 px-5 py-10 text-center sm:px-8 sm:py-12 sm:text-left lg:px-10 lg:py-14">
-            <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">Location</p>
+          <div className="rounded-3xl bg-white p-6 shadow-matte-lg ring-1 ring-slate-200/50 sm:p-8 lg:p-10 text-center sm:text-left">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">Location</p>
             <p className="mt-2 text-xl font-bold text-slate-900 sm:text-2xl">{site.landmarkName}</p>
             <p
               lang="ur"
               dir="rtl"
-              className="font-urdu mt-2 text-[0.95rem] font-semibold leading-relaxed text-sky-700"
+              className="font-urdu mt-2 text-[0.95rem] font-semibold leading-relaxed text-slate-500"
             >
               {site.landmarkNameUrdu}
             </p>
@@ -53,26 +48,28 @@ export function AboutSection() {
             <p className="mt-4 text-sm text-slate-500">
               Maps: <span className="font-mono text-slate-700">{site.mapLocationQuery}</span>
             </p>
-            <div className="mt-10 space-y-8">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Hours</p>
-                <p className="mt-2 text-lg font-semibold text-slate-900">{site.hours}</p>
+            <div className="mt-8 space-y-6">
+              <div className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200/50">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">Hours</p>
+                <p className="mt-1.5 text-[15px] font-semibold text-slate-900">{site.hours}</p>
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Phone</p>
+              <div className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200/50">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">Phone</p>
                 <a
                   href={`tel:${site.phoneE164}`}
-                  className="mt-2 block text-lg font-semibold text-sky-700 hover:underline"
+                  className="mt-1.5 block text-[15px] font-bold text-slate-900 hover:text-primary transition"
                 >
                   {site.phoneDisplay}
                 </a>
-                <p className="mt-1 text-xs font-medium text-slate-500">Alt.</p>
-                <a
-                  href={`tel:${site.phoneSecondaryE164}`}
-                  className="text-base font-semibold text-slate-800 hover:text-sky-700 hover:underline"
-                >
-                  {site.phoneSecondaryDisplay}
-                </a>
+                <div className="mt-2 flex items-center justify-center sm:justify-start gap-2">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Alt.</span>
+                  <a
+                    href={`tel:${site.phoneSecondaryE164}`}
+                    className="text-sm font-semibold text-slate-600 hover:text-primary transition"
+                  >
+                    {site.phoneSecondaryDisplay}
+                  </a>
+                </div>
               </div>
             </div>
           </div>

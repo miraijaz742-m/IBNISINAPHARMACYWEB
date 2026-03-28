@@ -85,10 +85,10 @@ export function MedicineAvailabilitySection() {
   }, [items]);
 
   const inputClass =
-    "mt-1.5 w-full rounded-md border border-sky-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-400";
+    "mt-1.5 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white";
 
   return (
-    <section id="availability" className="scroll-mt-24 w-full border-y border-sky-100 bg-white py-20 md:py-24 lg:py-28">
+    <section id="availability" className="scroll-mt-24 w-full bg-white py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">Before you visit</p>
         <h2 className="section-title">Check medicine availability</h2>
@@ -97,8 +97,8 @@ export function MedicineAvailabilitySection() {
           store.
         </p>
 
-        <div className="section-body mx-auto max-w-2xl">
-          <div className="py-2 sm:py-4">
+        <div className="section-body mx-auto max-w-2xl rounded-3xl bg-white p-6 sm:p-8 md:p-10 shadow-matte-xl ring-1 ring-slate-200/50">
+          <div className="py-2 sm:py-0">
             <div className="grid gap-5 sm:gap-4 md:grid-cols-[minmax(0,1fr)_6.5rem_9.5rem] md:items-end">
               <div>
                 <label htmlFor={`${formId}-name`} className="block text-sm font-semibold text-slate-800">
@@ -145,23 +145,23 @@ export function MedicineAvailabilitySection() {
               type="button"
               onClick={addItem}
               disabled={!canAdd}
-              className="mt-4 w-full rounded-md bg-sky-100 px-5 py-3 text-sm font-semibold text-sky-800 transition hover:bg-sky-200 disabled:cursor-not-allowed disabled:opacity-50 md:inline-flex md:w-auto md:min-w-[140px]"
+              className="mt-6 w-full rounded-full bg-primary/10 px-6 py-3.5 text-[15px] font-bold text-primary transition hover:bg-primary/20 hover:scale-[1.02] disabled:hover:scale-100 disabled:cursor-not-allowed disabled:opacity-50 md:inline-flex md:w-auto md:min-w-[140px]"
             >
               Add item
             </button>
 
             {items.length > 0 ? (
-              <ul className="mt-10 divide-y divide-sky-100 border-y border-sky-100">
+              <ul className="mt-10 divide-y divide-slate-100 border-y border-slate-100">
                 {items.map((item) => (
-                  <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-4 first:pt-2">
+                  <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-4 first:pt-4">
                     <div className="min-w-0">
-                      <p className="font-semibold text-slate-900">{item.name}</p>
-                      <p className="text-sm text-slate-600">{formatQuantityLine(item.quantity, item.unit)}</p>
+                      <p className="text-[17px] font-bold text-slate-900">{item.name}</p>
+                      <p className="mt-0.5 text-sm font-medium text-slate-500">{formatQuantityLine(item.quantity, item.unit)}</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeItem(item.id)}
-                      className="shrink-0 rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 transition hover:bg-sky-50 hover:text-red-600"
+                      className="shrink-0 rounded-full px-4 py-2 text-[13px] font-bold text-slate-500 transition hover:bg-red-50 hover:text-red-600"
                     >
                       Remove
                     </button>
@@ -169,7 +169,7 @@ export function MedicineAvailabilitySection() {
                 ))}
               </ul>
             ) : (
-              <p className="mt-10 border border-dashed border-sky-200 bg-sky-50/50 px-4 py-8 text-center text-sm text-slate-500">
+              <p className="mt-10 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-[15px] text-slate-500">
                 No medicines added yet. Use the form above to build your list.
               </p>
             )}
@@ -179,7 +179,7 @@ export function MedicineAvailabilitySection() {
                 type="button"
                 onClick={sendViaWhatsApp}
                 disabled={items.length === 0}
-                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:min-w-[200px]"
+                className="inline-flex min-h-[56px] w-full items-center justify-center rounded-full bg-primary px-8 py-4 text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:bg-primary/95 hover:shadow-matte-md disabled:hover:translate-y-0 disabled:hover:shadow-none disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:min-w-[200px]"
               >
                 Send message
               </button>
@@ -192,9 +192,9 @@ export function MedicineAvailabilitySection() {
           </div>
 
           {messagePreview ? (
-            <details className="mt-6 rounded-md border border-sky-200 bg-sky-50/40 p-4 text-sm">
-              <summary className="cursor-pointer font-semibold text-slate-700">Preview message</summary>
-              <pre className="mt-3 whitespace-pre-wrap break-words rounded-md bg-white p-3 text-xs text-slate-600">
+            <details className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 text-[15px]">
+              <summary className="cursor-pointer font-bold text-slate-700 p-4">Preview message</summary>
+              <pre className="px-5 pb-5 pt-1 whitespace-pre-wrap break-words text-[13px] font-medium text-slate-500 bg-transparent">
                 {messagePreview}
               </pre>
             </details>

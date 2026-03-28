@@ -1,65 +1,111 @@
-import { availabilityHref, getWhatsAppUrl, pageNavLinks, site } from "@/lib/site";
+import Image from "next/image";
+import { availabilityHref, getHeroImageSrc, getWhatsAppUrl, pageNavLinks, site } from "@/lib/site";
 
 export function SiteFooter() {
   const instagram = site.social.instagram?.trim();
   const facebook = site.social.facebook?.trim();
 
   return (
-    <footer className="border-t border-slate-700/50 bg-[#1a2332] text-white shadow-[inset_0_1px_0_rgb(255_255_255_/_0.04)]">
-      <div className="section-inner pb-[max(2.5rem,env(safe-area-inset-bottom,0px))] pt-10 sm:pb-[max(3rem,env(safe-area-inset-bottom,0px))] sm:pt-12">
-        <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
-          <div className="text-center md:text-left">
-            <p className="text-xl font-bold">{site.name}</p>
-            <p className="mt-1 text-sm font-medium text-white/90">{site.tagline}</p>
-            <p className="mt-2 text-sm font-semibold text-white">{site.landmarkName}</p>
-            <p lang="ur" dir="rtl" className="font-urdu mt-1 text-sm font-medium leading-relaxed text-sky-100">
-              {site.landmarkNameUrdu}
-            </p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/85">
-              {site.address} · {site.locationLabel}
-            </p>
-            <nav
-              className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-medium md:justify-start"
-              aria-label="Footer"
-            >
+    <footer className="border-t border-slate-900 bg-slate-950 text-white selection:bg-primary/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute right-[10%] top-[-20%] h-[300px] w-[300px] rounded-full bg-primary/10 blur-[100px]" />
+      <div className="absolute left-[-10%] bottom-[-10%] h-[200px] w-[200px] rounded-full bg-blue-500/5 blur-[80px]" />
+
+      <div className="section-inner pb-[max(2.5rem,env(safe-area-inset-bottom,0px))] pt-16 sm:pb-[max(3rem,env(safe-area-inset-bottom,0px))] relative z-10">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          
+          {/* Column 1: Brand & Identity */}
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="mb-6 h-16 w-16 overflow-hidden rounded-full bg-white p-1 shadow-2xl ring-2 ring-white/10 sm:h-20 sm:w-20">
+              <div className="relative h-full w-full overflow-hidden rounded-full">
+                <Image
+                  src={getHeroImageSrc()}
+                  alt=""
+                  fill
+                  className="object-contain scale-[1.3]"
+                  unoptimized
+                />
+              </div>
+            </div>
+            <p className="text-2xl font-black tracking-tight text-white">{site.name}</p>
+            <p className="mt-1 text-sm font-medium text-white/60">{site.tagline}</p>
+            
+            <div className="mt-6 space-y-3">
+              <div className="space-y-1">
+                <p className="text-[15px] font-bold text-primary">{site.landmarkName}</p>
+                <p lang="ur" dir="rtl" className="font-urdu text-lg font-medium leading-relaxed text-sky-100/90">
+                  {site.landmarkNameUrdu}
+                </p>
+              </div>
+              <p className="max-w-[240px] text-xs leading-relaxed text-white/50">
+                {site.address} · {site.locationLabel}
+              </p>
+            </div>
+          </div>
+
+          {/* Column 2: Quick Navigation */}
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <h4 className="text-[13px] font-bold uppercase tracking-widest text-white/40 mb-6">Explore</h4>
+            <nav className="flex flex-col gap-3">
               {pageNavLinks.map((l) => (
-                <a key={l.href} href={l.href} className="text-white/85 hover:text-white">
+                <a 
+                  key={l.href} 
+                  href={l.href} 
+                  className="text-[15px] font-medium text-white/70 transition hover:text-primary"
+                >
                   {l.label}
                 </a>
               ))}
             </nav>
           </div>
-          <div className="flex flex-col items-center gap-4 md:items-end">
-            <div className="flex flex-col gap-3 text-sm md:text-right">
-              <a href={`tel:${site.phoneE164}`} className="text-white/90 hover:text-white">
-                {site.phoneDisplay}
-              </a>
-              <a href={`tel:${site.phoneSecondaryE164}`} className="text-white/80 hover:text-white">
-                {site.phoneSecondaryDisplay}
-              </a>
-              <a href={`mailto:${site.email}`} className="text-white/90 hover:text-white">
-                {site.email}
-              </a>
+
+          {/* Column 3: Contact Details */}
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <h4 className="text-[13px] font-bold uppercase tracking-widest text-white/40 mb-6">Contact</h4>
+            <div className="flex flex-col gap-4">
+              <div className="space-y-1">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-white/30">Main Line</p>
+                <a href={`tel:${site.phoneE164}`} className="block text-base font-bold text-white/90 hover:text-primary transition">
+                  {site.phoneDisplay}
+                </a>
+              </div>
+              <div className="space-y-1">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-white/30">Support</p>
+                <a href={`tel:${site.phoneSecondaryE164}`} className="block text-base font-bold text-white/80 hover:text-primary transition">
+                  {site.phoneSecondaryDisplay}
+                </a>
+              </div>
+              <div className="space-y-1 pt-1">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-white/30">Email</p>
+                <a href={`mailto:${site.email}`} className="block break-all text-[14px] font-medium text-white/80 hover:text-primary transition">
+                  {site.email}
+                </a>
+              </div>
             </div>
+          </div>
+
+          {/* Column 4: Socials & Support */}
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <h4 className="text-[13px] font-bold uppercase tracking-widest text-white/40 mb-6">Connect</h4>
             <div className="flex items-center gap-3">
               <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/20"
+                className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-primary hover:border-primary hover:-translate-y-1 shadow-lg"
                 aria-label="WhatsApp"
               >
-                <WhatsAppGlyph className="h-5 w-5" />
+                <WhatsAppGlyph className="h-6 w-6" />
               </a>
               {instagram ? (
                 <a
                   href={instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/20"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-[#E1306C] hover:border-[#E1306C] hover:-translate-y-1 shadow-lg"
                   aria-label="Instagram"
                 >
-                  <InstagramGlyph className="h-5 w-5" />
+                  <InstagramGlyph className="h-6 w-6" />
                 </a>
               ) : null}
               {facebook ? (
@@ -67,22 +113,38 @@ export function SiteFooter() {
                   href={facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/20"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-[#1877F2] hover:border-[#1877F2] hover:-translate-y-1 shadow-lg"
                   aria-label="Facebook"
                 >
-                  <FacebookGlyph className="h-5 w-5" />
+                  <FacebookGlyph className="h-6 w-6" />
                 </a>
               ) : null}
             </div>
-            <a href={availabilityHref} className="text-sm font-semibold text-white hover:underline">
-              Check availability
-            </a>
+            
+            <div className="mt-8">
+              <a 
+                href={availabilityHref} 
+                className="group inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-xs font-bold text-white transition hover:bg-white hover:text-slate-950"
+              >
+                Check Medicine Availability
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </div>
           </div>
         </div>
-        <p className="mt-10 border-t border-white/25 pt-8 text-center text-xs leading-relaxed text-white/75">
-          © {new Date().getFullYear()} {site.name}. Licensed retail pharmacy · Medicines sold only
-          against valid prescription where required.
-        </p>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <p className="text-[11px] leading-relaxed text-white/40 text-center sm:text-left max-w-md">
+            © {new Date().getFullYear()} {site.name}. Licensed retail pharmacy. 
+            Medicines sold only against valid prescription where required by law.
+          </p>
+          <div className="flex gap-6 text-[11px] font-bold uppercase tracking-widest text-white/20">
+            <span>Budgam</span>
+            <span>Beerwah</span>
+            <span>Kashmir</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

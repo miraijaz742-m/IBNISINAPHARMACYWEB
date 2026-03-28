@@ -1,25 +1,28 @@
 import { inStoreHighlights } from "@/lib/site";
+import { PackageOpen, Receipt, Search, Smile } from "lucide-react";
 
-const icons = [ShelvesIcon, ReceiptIcon, SearchIcon, SmileIcon] as const;
+const icons = [PackageOpen, Receipt, Search, Smile] as const;
 
 export function InStoreSection() {
   return (
-    <section id="in-store" className="scroll-mt-24 w-full border-t border-sky-100 bg-white py-20 md:py-24 lg:py-28">
+    <section id="in-store" className="scroll-mt-24 w-full bg-white py-20 md:py-24 lg:py-28">
       <div className="section-inner">
         <p className="section-eyebrow">Visit us</p>
         <h2 className="section-title">In-store experience</h2>
         <p className="section-intro">
           A tidy shop floor, clear signage, and staff who help you find what you need—without the rush.
         </p>
-        <ul className="section-body grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <ul className="section-body grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {inStoreHighlights.map((t, i) => {
-            const Icon = icons[i] ?? ShelvesIcon;
+            const Icon = icons[i] ?? PackageOpen;
             return (
-              <li key={t}>
-                <div className="flex h-10 w-10 items-center text-sky-600" aria-hidden>
-                  <Icon />
+              <li key={t} className="flex">
+                <div className="flex w-full flex-col items-center text-center sm:items-start sm:text-left p-6 sm:p-8 bg-white rounded-3xl shadow-matte-sm ring-1 ring-slate-200/50 hover:-translate-y-1 hover:shadow-matte-lg transition duration-300">
+                  <span className="mb-4 sm:mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary" aria-hidden>
+                    <Icon className="h-6 w-6" strokeWidth={1.5} />
+                  </span>
+                  <p className="text-[16px] font-bold leading-snug text-slate-900">{t}</p>
                 </div>
-                <p className="mt-4 text-base font-semibold leading-snug text-slate-900 sm:text-lg">{t}</p>
               </li>
             );
           })}
@@ -29,49 +32,3 @@ export function InStoreSection() {
   );
 }
 
-function ShelvesIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h10" />
-    </svg>
-  );
-}
-
-function ReceiptIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-      />
-    </svg>
-  );
-}
-
-function SmileIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-  );
-}

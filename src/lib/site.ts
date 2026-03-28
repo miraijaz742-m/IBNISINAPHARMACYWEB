@@ -12,7 +12,7 @@ export const site = {
   landmarkNameUrdu: "جامع مسجد حنفی کۄنٚڈُر",
   address: "Jamia Road, near Jamia Masjid Hanafi, Kandoora, Beerwah, Budgam",
   /** Exact pin for Google Maps (Open in Maps + embed iframe) */
-  mapLocationQuery: "2H7W+24M, Jamia Road, Kandoora, Beerwah, Jammu and Kashmir 193411",
+  mapLocationQuery: "Ibni Sina Pharmacy Kandoora, XHRM+PHV, Kandoora, Jammu and Kashmir 193411",
   /** P1 — primary call + all WhatsApp links (wa.me) */
   phoneDisplay: "+91 70060 88450",
   phoneE164: "+917006088450",
@@ -126,6 +126,7 @@ export const pageNavGroups = [
   {
     id: "about-services",
     label: "About & services",
+    href: "#about",
     items: [
       { href: "#about", label: "About" },
       { href: "#services", label: "Services" },
@@ -135,6 +136,7 @@ export const pageNavGroups = [
   {
     id: "trust",
     label: "Trust & reviews",
+    href: "#trust",
     items: [
       { href: "#trust", label: "Why us" },
       { href: "#reviews", label: "Reviews" },
@@ -143,6 +145,7 @@ export const pageNavGroups = [
   {
     id: "visit",
     label: "Visit",
+    href: "#in-store",
     items: [
       { href: "#in-store", label: "In store" },
       { href: "#gallery", label: "Gallery" },
@@ -151,6 +154,7 @@ export const pageNavGroups = [
   {
     id: "help",
     label: "Help & contact",
+    href: "#contact",
     items: [
       { href: "#availability", label: "Availability" },
       { href: "#contact", label: "Contact" },
@@ -159,6 +163,7 @@ export const pageNavGroups = [
 ] as const satisfies readonly {
   readonly id: string;
   readonly label: string;
+  readonly href: string;
   readonly items: readonly PageNavLink[];
 }[];
 
@@ -180,7 +185,7 @@ export const availabilityHref = "#availability" as const;
  * Only list files that exist in `heroCarouselFilenames` below (order = slide order).
  * Bump `heroImageVersion` when you replace any file so browsers reload it.
  */
-export const heroImageVersion = "9";
+export const heroImageVersion = "10";
 
 /** Filenames under `public/` — order = slideshow order (first = navbar logo). */
 export const heroCarouselFilenames = [
@@ -241,19 +246,27 @@ export const reviews: readonly SiteReview[] = [
   },
 ];
 
-/** Unsplash — pharmacy / clinical interiors (remotePatterns allow images.unsplash.com) */
+/** Gallery images — Replace these in public/gallery/ folder */
 export const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1584308666741-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80",
-    alt: "Organised pharmacy shelves with products",
+    src: "/hero-1.jpg",
+    alt: "Ibni Sina Pharmacy Exterior",
   },
   {
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-    alt: "Clean healthcare environment",
+    src: "/hero-2.jpg",
+    alt: "Ibni Sina Pharmacy Interior",
   },
   {
-    src: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1200&q=80",
-    alt: "Pharmacist workspace and supplies",
+    src: "/hero-3.jpg",
+    alt: "Wide Range of Medicines",
+  },
+  {
+    src: "/hero-4.jpg",
+    alt: "Trusted Pharmacist Guidance",
+  },
+  {
+    src: "/hero-5.jpg",
+    alt: "Organized Medicine Shelves",
   },
 ] as const;
 

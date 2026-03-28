@@ -52,7 +52,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased text-ink overflow-x-hidden">
         <Navbar />
-        <main className="pb-20 lg:pb-0">
+        <main className="pb-28 lg:pb-0">
           {children}
         </main>
 
