@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { availabilityHref, getHeroImageSrc, pageNavGroups, site } from "@/lib/site";
+import { availabilityHref, getHeroImageSrc, heroCopy, pageNavGroups, site } from "@/lib/site";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 
 /**
@@ -37,11 +37,11 @@ export function Navbar() {
                     unoptimized
                   />
                 </div>
-                <div className="flex items-baseline gap-1.5 leading-[1.1]">
-                  <span className="text-xl font-black uppercase tracking-tighter text-slate-900">
+                <div className="flex flex-col leading-[0.85] pt-1">
+                  <span className="text-[1.3rem] font-black uppercase tracking-[0.16em] text-slate-900 group-hover:text-primary transition-colors duration-500">
                     Ibni Sina
                   </span>
-                  <span className="font-serif text-[1.1rem] italic leading-none text-primary">
+                  <span className="font-display text-[1.4rem] italic font-bold text-primary leading-none -mt-0.5 group-hover:text-slate-900 transition-colors duration-500">
                     pharmacy
                   </span>
                 </div>
@@ -65,7 +65,7 @@ export function Navbar() {
                 href={availabilityHref}
                 className="rounded-full bg-slate-900 px-6 py-2.5 text-sm font-bold text-white shadow-matte transition hover:bg-slate-800 active:scale-[0.98]"
               >
-                Book Appointment
+                {heroCopy.ctaAvailability}
               </a>
             </div>
           </div>
@@ -93,11 +93,11 @@ export function Navbar() {
                 unoptimized
               />
             </div>
-            <div className="flex flex-col leading-none pt-0.5">
-              <span className="text-[14px] font-black uppercase tracking-tight text-slate-900">
+            <div className="flex flex-col leading-[0.85] pt-1">
+              <span className="text-[15px] font-black uppercase tracking-[0.14em] text-slate-900">
                 Ibni Sina
               </span>
-              <span className="font-serif text-[13px] italic text-primary mt-0.5">
+              <span className="font-display text-[16px] italic font-bold text-primary leading-none -mt-0.5">
                 pharmacy
               </span>
             </div>
@@ -124,7 +124,7 @@ export function Navbar() {
               className="group flex min-h-[64px] w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 text-base font-bold text-white shadow-matte transition active:scale-[0.98]"
               onClick={() => setDrawerOpen(false)}
             >
-              <span>Book Appointment</span>
+              <span>{heroCopy.ctaAvailability}</span>
               <ChevronDown className="h-4 w-4 -rotate-90 text-white/50" />
             </a>
 

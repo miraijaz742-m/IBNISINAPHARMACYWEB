@@ -27,7 +27,14 @@ export function SiteFooter() {
                 />
               </div>
             </div>
-            <p className="text-2xl font-black tracking-tight text-white">{site.name}</p>
+            <div className="flex flex-col leading-[0.85] pt-1">
+              <span className="text-[1.8rem] font-black uppercase tracking-[0.16em] text-white">
+                Ibni Sina
+              </span>
+              <span className="font-display text-[2rem] italic font-bold text-primary leading-none -mt-1">
+                pharmacy
+              </span>
+            </div>
             <p className="mt-1 text-sm font-medium text-white/60">{site.tagline}</p>
             
             <div className="mt-6 space-y-3">

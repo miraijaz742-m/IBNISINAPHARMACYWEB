@@ -57,18 +57,18 @@ export function Hero() {
               platform that seamlessly connects you to your medicines.
             </p>
 
-            <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center sm:justify-start justify-center">
-              <a
-                href={availabilityHref}
-                className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center rounded-full border border-primary bg-white px-8 text-[15px] font-bold text-primary shadow-matte-sm transition hover:bg-primary/5 active:scale-95 sm:w-auto sm:min-w-[180px]"
-              >
-                Get Started Now
-              </a>
+            <div className="mt-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row sm:justify-start">
               <a
                 href={`tel:${site.phoneE164}`}
+                className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center rounded-full border border-primary bg-white px-8 text-[15px] font-bold text-primary shadow-matte-sm transition hover:bg-primary/5 active:scale-95 sm:w-auto sm:min-w-[180px]"
+              >
+                {heroCopy.ctaCall}
+              </a>
+              <a
+                href={availabilityHref}
                 className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center rounded-full bg-slate-900 px-8 text-[15px] font-bold text-white shadow-matte transition hover:bg-slate-800 active:scale-95 sm:w-auto sm:min-w-[180px]"
               >
-                Book Appointment
+                {heroCopy.ctaAvailability}
               </a>
             </div>
 
