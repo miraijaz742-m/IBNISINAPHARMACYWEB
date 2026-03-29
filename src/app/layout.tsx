@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   title: "Ibni Sina Pharmacy | Trusted Care, Genuine Medicines",
   description:
     "Ibni Sina Pharmacy, Beerwah, Budgam — near Jamia Masjid Hanafi, Kandoora. Genuine medicines, in-store guidance, and prescription support.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 /** Lets `env(safe-area-inset-*)` work on notched phones (iOS / modern Android). */
