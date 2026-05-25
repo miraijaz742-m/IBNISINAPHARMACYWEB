@@ -1,35 +1,28 @@
 {
-  "name": "ibni-sina-pharmacy",
+  "name": "ibni-sina-pharmacy-web",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "dev:webpack": "next dev",
+    "dev": "next dev",
     "build": "next build",
-    "build:static": "node scripts/static-export-build.cjs",
     "start": "next start",
-    "lint": "next lint",
-    "deploy:firebase": "npm run build:static && firebase deploy --only hosting"
+    "lint": "next lint"
   },
   "dependencies": {
-    "lucide-react": "^1.7.0",
+    "autoprefixer": "^10.5.0",
+    "client-only": "^0.0.1",
+    "lucide-react": "^0.468.0",
     "next": "^15.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "engines": {
-    "node": ">=20.0.0"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
+    "@types/node": "^20.14.9",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.17.0",
-    "eslint-config-next": "^15.1.0",
-    "firebase-tools": "^14.0.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16",
-    "typescript": "^5.7.2"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.9.3"
   }
 }

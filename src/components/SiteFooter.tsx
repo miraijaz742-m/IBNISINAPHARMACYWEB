@@ -31,7 +31,7 @@ export function SiteFooter() {
               <span className="text-[1.8rem] font-black uppercase tracking-[0.16em] text-white">
                 Ibni Sina
               </span>
-              <span className="font-display text-[2rem] italic font-bold text-primary leading-none -mt-1">
+              <span className="font-display text-[2rem] font-bold text-primary leading-none -mt-1">
                 pharmacy
               </span>
             </div>

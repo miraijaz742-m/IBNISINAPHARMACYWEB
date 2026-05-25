@@ -124,13 +124,11 @@ export type PageNavLink = { readonly href: string; readonly label: string };
 /** SaaS-style groups for the header dropdowns; footer still uses the flat `pageNavLinks` list. */
 export const pageNavGroups = [
   {
-    id: "about-services",
-    label: "About & services",
+    id: "about-us",
+    label: "About us",
     href: "#about",
     items: [
       { href: "#about", label: "About" },
-      { href: "#services", label: "Services" },
-      { href: "#categories", label: "Categories" },
     ],
   },
   {
@@ -198,7 +196,7 @@ export const heroCarouselFilenames = [
 
 /** First hero slide — used by the navbar circular logo */
 export function getHeroImageSrc(): string {
-  return `/logo.png?v=${heroImageVersion}`;
+  return `/ibnilogo.svg?v=${heroImageVersion}`;
 }
 
 export const heroCopy = {
@@ -235,14 +233,17 @@ export const reviews: readonly SiteReview[] = [
   {
     quote: "Very professional and helpful at the counter.",
     author: "Aamir Rashid",
+    avatarSrc: "/Men.svg",
   },
   {
     quote: "Reliable medicines and a calm, clean store.",
     author: "Sana Bhat",
+    avatarSrc: "/Women.svg",
   },
   {
     quote: "Quick billing and they take time to explain doses.",
     author: "Bilal Dar",
+    avatarSrc: "/Men.svg",
   },
 ];
 

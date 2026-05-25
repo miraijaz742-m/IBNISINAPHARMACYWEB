@@ -21,15 +21,16 @@ export function ReviewAvatar({ author, src }: Props) {
 
   if (src?.startsWith("/")) {
     return (
-      <Image
-        src={src}
-        alt={`${author}`}
-        width={56}
-        height={56}
-        className="h-14 w-14 shrink-0 rounded-full object-cover object-center ring-2 ring-white bg-sky-100"
-        sizes="56px"
-        unoptimized
-      />
+      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white bg-sky-100">
+        <Image
+          src={src}
+          alt={`${author}`}
+          fill
+          className="object-cover object-center scale-[1.25] transition-transform duration-500 hover:scale-[1.4]"
+          sizes="56px"
+          unoptimized
+        />
+      </div>
     );
   }
 

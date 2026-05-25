@@ -11,7 +11,7 @@ import {
   heroImageVersion,
   site,
 } from "@/lib/site";
-import { Phone } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 
 const CROSSFADE_MS = 1000;
 const SLIDE_INTERVAL_MS = 6000;
@@ -33,114 +33,89 @@ export function Hero() {
   }, [slides.length]);
 
   return (
-    <section className="relative overflow-hidden bg-[#F4F1FE] pb-20 pt-24 sm:pt-32 lg:pb-32 lg:pt-44">
-      {/* Background soft glow / abstract shapes */}
-      <div className="absolute left-[-10%] top-[-10%] h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px]" />
-      <div className="absolute right-[-5%] top-[20%] h-[400px] w-[400px] rounded-full bg-purple-400/10 blur-[100px]" />
+    <section className="relative overflow-hidden min-h-[90vh] md:min-h-[85vh] flex items-center pb-20 pt-16 sm:pb-28 sm:pt-28 lg:pb-32 lg:pt-36">
+      
+      {/* World-Class Background Slideshow */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        {slides.map((src, i) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              active === i ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              className={`object-cover transition-transform duration-[6000ms] ease-out ${
+                active === i ? "scale-105" : "scale-100"
+              }`}
+              priority={i === 0}
+              unoptimized
+            />
+          </div>
+        ))}
+        {/* Next-Level SaaS Frosted Overlay: perfectly balanced to let background images pop while keeping text super readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/25 to-white/40 md:bg-gradient-to-r md:from-white/50 md:via-white/20 md:to-transparent backdrop-blur-[0.5px] z-10" />
+      </div>
 
-      <div className="section-inner-wide relative">
+      <div className="section-inner-wide relative z-20 w-full">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8 justify-items-center lg:justify-items-start">
-          {/* Left: Content */}
-          <div className="max-w-2xl text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-matte-sm ring-1 ring-slate-200/60">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">#1</span>
+          
+          {/* Left: Content (Premium Glassmorphic Card for 100% legibility and modern SaaS feel) */}
+          <div className="max-w-2xl bg-white/80 backdrop-blur-md border border-white/60 rounded-3xl p-6 sm:p-10 shadow-matte-xl text-center lg:text-left flex flex-col items-center lg:items-start transition-all duration-300 hover:bg-white/85 hover:shadow-matte-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-matte-sm ring-1 ring-slate-200/50 transition-all duration-300 hover:scale-105 hover:bg-white hover:ring-primary/30 select-none">
+              <span className="flex h-5 w-5 animate-pulse items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white shadow-sm">#1</span>
               <span className="text-[13px] font-bold tracking-tight text-slate-600">Best Pharmacy in the Region</span>
             </div>
 
             <h1 className="mt-6 sm:mt-8 text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.12] tracking-tight text-slate-900">
-              We bring professional <br className="hidden sm:block" />
-              <span className="text-primary italic">pharmacy</span> support.
+              Your trusted care at <br className="hidden sm:block" />
+              <span className="text-primary">Ibni Sina</span> pharmacy.
             </h1>
 
-            <p className="mt-6 sm:mt-8 text-[15px] sm:text-xl leading-relaxed text-slate-600">
-              {heroCopy.sub} Delivering comprehensive healthcare support through our innovative 
-              platform that seamlessly connects you to your medicines.
+            <p className="mt-6 sm:mt-8 text-[15px] sm:text-xl leading-relaxed text-slate-600 max-w-xl">
+              {heroCopy.sub} Delivering comprehensive healthcare support and authentic medicines that seamlessly connect you to premium care.
             </p>
 
             <div className="mt-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row sm:justify-start">
+              {/* Call Now Outline Button (Slate Border) */}
               <a
                 href={`tel:${site.phoneE164}`}
-                className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center rounded-full border border-primary bg-white px-8 text-[15px] font-bold text-primary shadow-matte-sm transition hover:bg-primary/5 active:scale-95 sm:w-auto sm:min-w-[180px]"
+                className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center gap-2 rounded-full border-2 border-slate-200 bg-white px-8 text-[15px] font-bold text-slate-700 shadow-sm transition duration-300 hover:bg-slate-50 hover:border-slate-400 hover:text-slate-900 active:scale-95 sm:w-auto sm:min-w-[180px]"
               >
-                {heroCopy.ctaCall}
+                <Phone className="h-4 w-4 text-slate-400" strokeWidth={2.5} />
+                <span>{heroCopy.ctaCall}</span>
               </a>
+              
+              {/* Check Availability Solid Button (Mint Green) */}
               <a
                 href={availabilityHref}
-                className="flex min-h-[56px] w-full max-w-[280px] items-center justify-center rounded-full bg-slate-900 px-8 text-[15px] font-bold text-white shadow-matte transition hover:bg-slate-800 active:scale-95 sm:w-auto sm:min-w-[180px]"
+                className="group/btn flex min-h-[56px] w-full max-w-[280px] items-center justify-center gap-2 rounded-full bg-mint px-8 text-[15px] font-bold text-white shadow-matte transition duration-300 hover:bg-[#43927b] hover:shadow-lg active:scale-95 sm:w-auto sm:min-w-[180px]"
               >
-                {heroCopy.ctaAvailability}
+                <span>{heroCopy.ctaAvailability}</span>
+                <ArrowRight className="h-4 w-4 text-white/70 group-hover/btn:translate-x-1 transition-transform" />
               </a>
             </div>
-
-
           </div>
 
-          {/* Right: Image & Badges */}
-          <div className="relative">
-            {/* Main Image Card */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] shadow-matte-2xl ring-1 ring-slate-200/40 lg:aspect-square">
-              {slides.map((src, i) => (
-                <div
-                  key={src}
-                  className="absolute inset-0 transition-opacity duration-1000"
-                  style={{ 
-                    opacity: active === i ? 1 : 0, 
-                    zIndex: active === i ? 2 : 1,
-                  }}
-                >
-                  <Image
-                    src={src}
-                    alt={site.name}
-                    fill
-                    className={`object-cover transition-transform duration-[6000ms] ease-out ${active === i ? "scale-110" : "scale-100"}`}
-                    priority={i === 0}
-                    unoptimized
-                  />
-                </div>
-              ))}
-              
-            </div>
-
-
-
-            {/* Floating Info Badge: Socials (Hidden on mobile) */}
-            <div className="absolute right-6 top-6 z-20 hidden lg:flex gap-2">
-              {instagram ? (
-                <a
-                  href={instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-slate-700 shadow-matte-lg backdrop-blur-sm transition hover:scale-110 hover:text-pink-600 ring-1 ring-slate-200/50"
-                  title="Follow us on Instagram"
-                  aria-label="Instagram"
-                >
-                  <InstagramGlyph className="h-[22px] w-[22px]" />
-                </a>
-              ) : null}
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-green-600 shadow-matte-lg backdrop-blur-sm transition hover:scale-110 hover:text-green-500 ring-1 ring-slate-200/50"
-                title="Message on WhatsApp"
-                aria-label="WhatsApp"
-              >
-              </a>
-            </div>
-
-            {/* Floating Info Badge: 24h Service (Hidden on mobile) */}
-            <div className="absolute bottom-4 left-4 z-20 hidden lg:block rounded-[2rem] bg-white p-4 shadow-matte-xl ring-1 ring-slate-200/50 sm:-bottom-6 sm:-left-6 sm:p-5">
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary shadow-inner sm:h-12 sm:w-12 text-left">
-                  <Phone className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
+          {/* Right: Immersive Blank space on desktop to let images shine */}
+          <div className="relative w-full h-[150px] lg:h-[400px] flex items-end justify-center lg:justify-end select-none">
+            {/* Floating Info Badge: 24h Service (Positioned nicely on the right) */}
+            <div className="rounded-[2rem] bg-white/95 backdrop-blur-md p-5 shadow-matte-xl ring-1 ring-slate-200/50 hover:scale-105 transition-transform duration-300">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-mint/10 text-mint shadow-inner">
+                  <Phone className="h-6 sm:h-7 w-6 sm:w-7 text-mint animate-pulse" strokeWidth={1.5} />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 sm:text-[11px]">24 hour service</p>
-                  <p className="text-sm font-bold text-slate-900 sm:text-[15px] whitespace-nowrap">{site.phoneDisplay}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">24 hour service</p>
+                  <p className="text-[16px] font-black text-slate-900 whitespace-nowrap">{site.phoneDisplay}</p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
